@@ -28,7 +28,7 @@ export default ()=> {
             </button>
             <button onClick={handleClick} type='button' className='exposureBtn w-1/3 ml-2'>
             <label className={choice == ".7"? 'choiceLabel' : '' } htmlFor="FullSun">Full Sun</label>
-            <StaticImage id='.7' className={choice == ".7"? "StaticImage h-56 choice" : 'StaticImage h-56' } src="../../images/sunnyHouse.jpeg" alt="yellow house"/>
+            <StaticImage id='.7' className={choice == ".7"? "StaticImage h-56 choice" : 'StaticImage h-56' } src="../../images/sunnyhouse.jpeg" alt="yellow house"/>
             </button>
         </div>
         // <Swiper
