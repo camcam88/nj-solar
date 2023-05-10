@@ -3,11 +3,11 @@ import { useState, useEffect } from 'react';
 export default function useScroll(scrollPoint){
     const [scrollTop, setScrollTop] = useState(0);
     var scrolled = false 
-
+    const isBrowser = () => typeof window !== "undefined"
+    if (isBrowser()) {
     useEffect(() => {
-        const isBrowser = () => typeof window !== "undefined"
 
-        if (isBrowser()) {
+        
 
             const handleScroll = (event) => {
                 setScrollTop(window.scrollY);
@@ -17,8 +17,8 @@ export default function useScroll(scrollPoint){
             return () => {
                 window.removeEventListener('scroll', handleScroll);
             };
-        }
-    }, [window.scrollY]);
+        }, [window.scrollY]);
+    }
 
     if (scrollTop > scrollPoint){
         scrolled = true
