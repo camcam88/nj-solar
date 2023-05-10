@@ -12,7 +12,7 @@ function FAQPage(){
 
 return (
 <Layout>
-    <Seo title="Home" />
+    <Seo title="FAQ's" />
     <PromoBanner/>
     <NavBar/>
     <FaqContent/>
