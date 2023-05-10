@@ -28,7 +28,7 @@ module.exports = {
         // theme_color: ` #5289C9`,
         display: `minimal-ui`,
         limitInputPixels: false,
-        icon: `src/images/NJSolarDeals.svg`, // This path is relative to the root of the site.
+        icon: `src/images/njsfavicon.svg`, // This path is relative to the root of the site.
       },
     },
   ],
