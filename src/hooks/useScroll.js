@@ -5,14 +5,19 @@ export default function useScroll(scrollPoint){
     var scrolled = false 
 
     useEffect(() => {
-        const handleScroll = (event) => {
-            setScrollTop(window.scrollY);
-        };
-    
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
+        const isBrowser = () => typeof window !== "undefined"
+
+        if (isBrowser()) {
+
+            const handleScroll = (event) => {
+                setScrollTop(window.scrollY);
+            };
+        
+            window.addEventListener('scroll', handleScroll);
+            return () => {
+                window.removeEventListener('scroll', handleScroll);
+            };
+        }
     }, [window.scrollY]);
 
     if (scrollTop > scrollPoint){

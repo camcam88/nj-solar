@@ -16,12 +16,14 @@ function NavBar() {
             text-base
             border-b
             border-b-slate-900
-            px-4'>
+            px-4
+            my-3
+            pb-4'>
             <Link to='../'>
                     <StaticImage 
                         src='../../images/NJSolarDeals.svg'
-                        height={95}
-                        width={135}
+                        height={75}
+                        width={100}
                         /></Link>
 
                     <LinkList/>
