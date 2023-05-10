@@ -1,0 +1,18 @@
+.aboutSection{
+    color: black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100vw;
+    padding-top: 42px;
+}
+
+.aboutSection p{
+    font-size: x-large;
+    margin-bottom: 42px;
+    text-align: left;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 95vw;
+}

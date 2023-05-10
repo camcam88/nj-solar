@@ -1,0 +1,36 @@
+.menuIcon{
+    margin-right: 1.4rem;
+    padding-top: .6rem;
+}
+.line{
+    background-color: #5289C9;
+    width: 3rem;
+    height: .3rem;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+.menuLinks{
+    position: absolute;
+    background-color: #5289C9;
+    border-radius: 8px;
+    width: 8rem;
+    height: 8rem;
+    right: 34px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    padding-top: 6px;
+    padding-right: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.menuLinks .Link{
+    color: white;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.Link:hover{
+    font-weight: 700;
+}

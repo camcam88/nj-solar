@@ -1,0 +1,14 @@
+.faqDiv{
+padding-left: 1rem;
+padding-right: 1rem;
+}
+.faqQeustion{
+    color: #5289C9;
+    margin-bottom: 24px;
+    font-size: xx-large;
+}
+.faqAnswer{
+    color: rgb(4, 2, 5);
+    margin-bottom: 42px;
+    font-size: larger;
+}

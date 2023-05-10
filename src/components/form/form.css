@@ -1,0 +1,146 @@
+.solarForm{
+    color: rgb(36, 35, 35);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: x-large;
+    width: 100vw;
+    padding: 1rem;
+}
+
+.Field,label{
+    width: 95vw;
+    font-size: x-large;
+}
+
+label{
+    font-weight: 300;
+}
+
+.Field{
+    margin-bottom: 2rem;
+    background-color: rgba(175, 212, 226, 0.295);
+    padding-left: .5rem;
+    border-radius: 4px;
+}
+
+.submit{
+    height: 4rem;
+} 
+
+.submit:hover{
+    background-color: rgba(84, 151, 252, 0.63);
+}
+.imgRow{
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    height: 9rem;
+}
+
+.img1{
+    z-index: 1;
+    width: 40vw;
+    transform: scale(.8,.8);
+    order: 1;
+}
+.img2{
+    z-index: 30;
+    width: 60vw;
+    transform: scale(1.1,1.1);
+    order: 2;
+}
+.img3{
+    z-index: 1;
+    width: 40vw;
+    transform: scale(.8,.8);
+    order: 3;
+}
+
+.StaticImage{
+    margin-top: 4px;
+    border-radius: 8px;
+    filter: blur(.8px);
+    transform: scale(.9,.9);
+}
+.exposureRow{
+    display: flex;
+}
+
+.choice{
+    /* border: #5289C9 solid 3px; */
+    transform: scale(1.05,1.05);
+    z-index: 30;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-right: 4px;
+    margin-left: 4px;
+    filter: blur(0px);
+}
+
+.choiceLabel{
+    z-index: 90;
+    font-weight: 400;
+}
+
+.label{
+    font-size: larger;
+    font-weight: 400;
+}
+
+.zipDiv{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: rgb(247, 247, 247);
+    height: 50vh;
+    width: 40vw;
+    z-index: 50;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+    align-content: center;
+    padding-top: 6rem;
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    min-width: 26rem;
+    max-width: 30rem;
+}
+
+.zipDiv input{
+    margin-top: 1rem;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    padding-left: 1rem;
+}
+
+.zipLabel{
+    padding-left: .5rem;
+    font-weight: 400;
+}
+.zipP{
+    font-size: smaller;
+    font-weight: 300;
+    padding-left: .5rem;
+    color: rgb(58, 57, 57);
+}
+.zipButton{
+    background-color: cornflowerblue;
+    margin-top: 2rem;
+    border-radius: 6px;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    color: white;
+    font-weight: 500;
+}
+.zipHidden{
+    display: none;
+}
+.zipError{
+    color: tomato;
+    text-align: center;
+    font-weight: 600;
+    padding-top: 1rem;
+}
+.learnMore{
+    color: dodgerblue;
+    text-align: center;
+    font-weight: 600;
+}
