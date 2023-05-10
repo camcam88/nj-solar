@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -10,7 +10,6 @@ import Footer from '../components/footer/Footer'
 
 
 function IndexPage(){
-  const [showForm, setShowForm ] = useState(false)
 
 return (
   <Layout>

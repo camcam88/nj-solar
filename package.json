@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "deepmerge": "^4.3.1",
     "formik": "^2.2.9",
     "gatsby": "^5.9.0",
     "gatsby-plugin-image": "^3.0.0",
