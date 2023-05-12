@@ -19,15 +19,15 @@ export default ()=> {
     return (
         <div className='exposureRow  flex sm:flex-row max-w-5xl'>
             <button onClick={handleClick} type='button' className='exposureBtn w-1/3 mr-2'>
-            <label className={choice == "1.3"? 'choiceLabel' : '' } htmlFor="Shaded">Shaded</label>
+            <label className={choice == "1.3"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="Shaded">Shaded</label>
             <StaticImage id='1.3' className={choice == "1.3"? "StaticImage h-56 choice" : 'StaticImage h-56' } src="../../images/shadeHouse.jpeg" alt="yellow house"/>
             </button>
             <button onClick={handleClick} type='button' className='exposureBtn w-1/3'>
-            <label className={choice == "1"? 'choiceLabel' : '' } htmlFor="PartialShade">Partial Shade</label>
+            <label className={choice == "1"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="PartialShade">Partial Shade</label>
             <StaticImage id='1' className={choice == "1"? "StaticImage h-56 choice" : 'StaticImage h-56' } src="../../images/yellowHouse.webp" alt="yellow house"/>
             </button>
             <button onClick={handleClick} type='button' className='exposureBtn w-1/3 ml-2'>
-            <label className={choice == ".7"? 'choiceLabel' : '' } htmlFor="FullSun">Full Sun</label>
+            <label className={choice == ".7"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="FullSun">Full Sun</label>
             <StaticImage id='.7' className={choice == ".7"? "StaticImage h-56 choice" : 'StaticImage h-56' } src="../../images/sunnyhouse.jpeg" alt="yellow house"/>
             </button>
         </div>

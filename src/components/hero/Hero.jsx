@@ -3,12 +3,7 @@ import GSButton from '../utils/GetStartedButton'
 import { StaticImage } from "gatsby-plugin-image"
 
 function HeroPage() {
-    const [showForm, setShowForm ] = useState(false)
 
-    function handleClick() {
-        console.log("clicked")
-        setShowForm(!showForm)
-    }
     
     return ( 
     <div className='
@@ -57,37 +52,42 @@ function HeroPage() {
                 font-sans
                 font-bold
                 mt-8
-                '>Go Solar With One Low Hassle-Free Quote</h1>
+                '>Go Solar!</h1>
             <h3 className='
-                text-3xl
+                text-xl
                 font-normal
                 mb-14
-                '>Best Equipment. 30 Year Warranty on Parts, Labor and Panel Performance.</h3>
+                px-4
+                '>30 Year Warranty on: Parts, Labor and Panel Performance.</h3>
             <GSButton />
-            <StaticImage 
-            alt='Cartoon family near a solar powered lamp'
-            src='../../images/FamilyPicture.png'
-            className='
-                mainImg
-                mt-48
-                w-[18vw]
-                translate-y-1
-                hidden
-                lg:block
-            '
-            />
-            <StaticImage 
-            alt='Cartoon home with solar panels'
-            src='../../images/FinishedDesign.png'
-            className='
-                mainImg
-                mt-20
-                w-[38vw]
-                translate-y-1
-                -translate-x-4
-                lg:hidden
-            '
-            />
+            <div className='hidden lg:block'>
+                <StaticImage 
+                alt='Cartoon family near a solar powered lamp'
+                src='../../images/FamilyPicture.png'
+                className='
+                    mainImg
+                    mt-48
+                    w-[18vw]
+                    translate-y-1
+                    hidden
+                    lg:block
+                '
+                />
+            </div>
+            <div className='lg:hidden'>
+                <StaticImage 
+                alt='Cartoon home with solar panels'
+                src='../../images/FinishedDesign.png'
+                className='
+                    mainImg
+                    mt-20
+                    w-[38vw]
+                    translate-y-1
+                    -translate-x-4
+                    lg:hidden
+                '
+                />
+            </div>
         </div>
         <div
             className='

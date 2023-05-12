@@ -91,7 +91,8 @@ export default function BasicForm(props){
                 {
                 untitSizeSet ?
                 <>
-                    <label className='label max-w-5xl my-8' htmlFor="Panel">Panel</label>
+                    <label className='label max-w-5xl mt-8 pl-1.5' htmlFor="Panel">Panel</label>
+                    <p className='text-left mb-6 text-slate-500 font-light' >Choose a system.</p>
                     <PanleRow> 
                         <PannelCard lable='QCELL 365' tag='qcell'/>
                         <PannelCard lable='SOLARIA 370' tag='solaria'/>
@@ -122,10 +123,11 @@ export default function BasicForm(props){
                 </>    
                 :
                 <>
-                <label className='label max-w-5xl my-6' htmlFor="exposure">Sun Exposure</label>
+                <label className='label max-w-5xl mt-6 pl-1.5' htmlFor="exposure">Sun Exposure</label>
                 <p className='text-left mb-6 text-slate-500 font-light' >How much sun exposure does your house have?</p>
                 <Swiper/>
-                <label className='label max-w-5xl mt-12' htmlFor="unitSize">Unit Size</label>
+                <label className='label max-w-5xl mt-12 pl-1.5' htmlFor="unitSize">Unit Size</label>
+                <p className='text-left mb-6 text-slate-500 font-light' >How much energy does your house need?</p>
                 <Field className='Field max-w-5xl mt-4 mb-8' id="unitSize" name="unitSize" type='number' placeholder="0" onChange={handleChange} disabled={untitSizeSet} />
                 <button className='Field submit mt-6 max-w-5xl' type="button" onClick={handleClick} disabled={loading}>Continue</button>
                 </>

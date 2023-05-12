@@ -7,7 +7,6 @@
 }
 
 .Field,label{
-    width: 95vw;
     font-size: x-large;
 }
 
@@ -91,16 +90,16 @@ label{
     flex-direction: column;
     position: absolute;
     background-color: rgb(247, 247, 247);
-    height: 50vh;
-    width: 40vw;
+    height: 55vh;
+    width: 30vw;
     z-index: 50;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8px;
     align-content: center;
     padding-top: 6rem;
-    padding-left: 2.4rem;
-    padding-right: 2.4rem;
-    min-width: 26rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    min-width: 22rem;
     max-width: 30rem;
 }
 

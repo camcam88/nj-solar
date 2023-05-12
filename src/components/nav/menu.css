@@ -13,21 +13,21 @@
     position: absolute;
     background-color: #5289C9;
     border-radius: 8px;
-    width: 8rem;
-    height: 8rem;
+    width: 9rem;
+    height: 9rem;
     right: 34px;
-    text-align: right;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    padding-top: 6px;
-    padding-right: 10px;
+    padding-top: 8px;
+    padding-left: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+    z-index: 90;
 }
 
 .menuLinks .Link{
     color: white;
-    margin-top: 6px;
+    margin-top: 8px;
     margin-bottom: 6px;
 }
 

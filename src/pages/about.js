@@ -16,7 +16,6 @@ return (
     <PromoBanner/>
     <NavBar/>
     <AboutContent/>
-    <Footer/>
 </Layout>
 )
 }

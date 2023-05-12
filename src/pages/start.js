@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 import PromoBanner from '../components/PromoBanner'
-import NavBar from '../components/nav/NavBar2'
+import NavBar from '../components/nav/NavBar'
 import {SystemProvider} from '../Context/systemContext'
 import {PpwProvider} from '../Context/ppwContext'
 import {ZipProvider} from '../Context/zipContext'

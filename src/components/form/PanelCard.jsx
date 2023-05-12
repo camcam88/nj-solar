@@ -35,7 +35,8 @@ function RadioBtn({lable, pannelImag}){
         py-3
         mx-2
         w-1/2
-        h-96
+        h-86
+        sm:h-96
         flex
         flex-col
         justify-center
@@ -58,7 +59,8 @@ function RadioBtn({lable, pannelImag}){
         py-3
         mx-2
         w-1/2
-        h-96
+        h-86
+        sm:h-96
         flex
         flex-col
         justify-center
@@ -67,7 +69,7 @@ function RadioBtn({lable, pannelImag}){
         hover:bg-[#567fb496]`}>
             <img  src={pannelImag} 
             alt="pannelImag"
-            className='h-60
+            className='h-44 sm:h-60
             '
             />
             <hr/>
