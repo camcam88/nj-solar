@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "gatsby"
-import MenuBtn from './MenuBtn'
 
 import './menu.css'
 import { useState } from 'react';
@@ -15,10 +14,10 @@ function Menu(){
     }
     const MBtn = ()=> {
         return(
-        <button onClick={ handleClick } type='button' class="menuIcon">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
+        <button onClick={ handleClick } type='button' className="menuIcon">
+                <div className="line"></div>
+                <div className="line"></div>
+                <div className="line"></div>
         </button>
         )
     }
@@ -31,7 +30,7 @@ function Menu(){
             <div 
             className={hidden? 'hidden' : 'menuLinks'}>
                             <NavLink to='../about' name='About Us'/> 
-                            <NavLink to='../faq' name='Coverage Area'/> 
+                            <NavLink to='../area' name='Coverage Area'/> 
                             <NavLink to='../faq' name='FAQ'/> 
             </div>
         </div>

@@ -27,6 +27,11 @@ export default function BasicForm(props){
     const ppw = usePPW();
     const price = usePrice();
     
+    let domainName
+    if (typeof window !== 'undefined') {
+        domainName = window.location.hostname;
+        }
+
     const handleChange = (e)=>{
         const kWatts = e.target.value
         console.log('CHANGED', kWatts)
@@ -36,6 +41,8 @@ export default function BasicForm(props){
         changeMinK(unitSize)
         setUntitSizeSet(true)
     }
+    // https://build-c30756c0-e33a-42e8-a5d9-d3c2f5c36572.gatsbyjs.io/start
+
     const handleSubmit = async (values) => {
         setLoading(true);
         const formData = values
@@ -45,7 +52,7 @@ export default function BasicForm(props){
         formData.ppw = ppw
         formData.priceEst = price
         console.log("formData: ", formData)
-        const response = await fetch('http://localhost:8888/.netlify/functions/submitRequest', {
+        const response = await fetch(`https://${domainName}/.netlify/functions/submitRequest`, {
         method: 'POST',
         body: JSON.stringify(formData),
         });

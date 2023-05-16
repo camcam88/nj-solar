@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const { stringify } = require('postcss');
+const { Headers } = require('netlify-functions');
 
 const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
@@ -34,9 +34,14 @@ exports.handler = async (event, context) => {
         
         </ul>`,
     })
-    console.log("info: ", info)
+        const headers = new Headers();
+        headers.set('Content-Type', 'application/json');
+        headers.set('Access-Control-Allow-Origin', '*');
+        headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        headers.set('Access-Control-Allow-Headers', 'Content-Type');
     return {
         statusCode: 200,
+        headers,
         body: JSON.stringify({message:'Succes!'}),
     }
 }
