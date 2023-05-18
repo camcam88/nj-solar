@@ -42,6 +42,7 @@ export default function BasicForm(props){
         setUntitSizeSet(true)
     }
     // https://build-c30756c0-e33a-42e8-a5d9-d3c2f5c36572.gatsbyjs.io/start
+    // https://njsolar.gatsbyjs.io/.netlify/functions/submitRequest
 
     const handleSubmit = async (values) => {
         setLoading(true);
@@ -52,7 +53,7 @@ export default function BasicForm(props){
         formData.ppw = ppw
         formData.priceEst = price
         console.log("formData: ", formData)
-        const response = await fetch(`https://${domainName}/.netlify/functions/submitRequest`, {
+        const response = await fetch(`https://njsolar.gatsbyjs.io/.netlify/functions/submitRequest`, {
         method: 'POST',
         body: JSON.stringify(formData),
         });
