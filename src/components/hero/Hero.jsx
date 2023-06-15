@@ -28,11 +28,12 @@ function HeroPage() {
             '
         >
         <StaticImage 
-            alt='Cartoon Home with blue solar panels'
+            alt='Cartoon Home with solar panels'
             src='../../images/FinishedDesign.png'
             className='
                 w-[28vw]
-                -mb-2
+                -mb-1
+                ml-6
             '
             />
         </div>
@@ -41,7 +42,8 @@ function HeroPage() {
             mainCol
             flex 
             flex-col
-            md:px-40
+            px-4
+            sm:px-40
             lg:px-0
             lg:w-1/2
             items-center 
@@ -51,19 +53,28 @@ function HeroPage() {
                 text-5xl 
                 font-sans
                 font-bold
-                mt-8
+                mt-48
                 '>Go Solar!</h1>
+            <h2 className='
+                text-black 
+                text-3xl 
+                font-sans
+                font-bold'>
+                Simple Easy No Dopsite
+            </h2>
             <h3 className='
-                text-xl
+                text-base
+                md:text-xl
                 font-normal
-                mb-14
+                mb-24
+                mt-8
                 px-4
                 '>30 Year Warranty on: Parts, Labor and Panel Performance.</h3>
             <GSButton />
-            <div className='hidden lg:block'>
-                <StaticImage 
+            <div className='hidden lg:block my-12'>
+                {/* <StaticImage 
                 alt='Cartoon family near a solar powered lamp'
-                src='../../images/FamilyPicture.png'
+                src='../../images/groundMount.png'
                 className='
                     mainImg
                     mt-48
@@ -72,7 +83,7 @@ function HeroPage() {
                     hidden
                     lg:block
                 '
-                />
+                /> */}
             </div>
             <div className='lg:hidden'>
                 <StaticImage 
@@ -106,7 +117,7 @@ function HeroPage() {
             src='../../images/SecondHouse.png'
             className='
                 w-[28vw]
-                -mb-1
+                -mb-1.5
             '
             />
         </div>

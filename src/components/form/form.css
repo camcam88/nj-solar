@@ -19,6 +19,18 @@ label{
     background-color: rgba(175, 212, 226, 0.295);
     padding-left: .5rem;
     border-radius: 4px;
+    min-width: 22rem;
+    width: 90vw;
+    max-width: 50rem;
+}
+.Field::-webkit-inner-spin-button,
+.Field::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.Field{
+    appearance: textfield;
+    -moz-appearance: textfield; /* Firefox */
 }
 
 .submit{
@@ -142,4 +154,20 @@ label{
     color: dodgerblue;
     text-align: center;
     font-weight: 600;
+}
+.roofBtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(253, 253, 253);
+    margin-top: 2rem;
+    border-radius: 6px;
+    padding-top: .4rem;
+    padding-bottom: .4rem;
+    font-weight: 500;
+    width: 100%;
+}
+.roofBtn:hover{
+    background-color: rgb(247, 247, 247);
 }

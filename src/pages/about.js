@@ -4,7 +4,6 @@ import Seo from "../components/seo"
 
 import PromoBanner from '../components/PromoBanner'
 import NavBar from '../components/nav/NavBar'
-import Footer from '../components/footer/Footer'
 import AboutContent from '../components/about/AboutContent'
 
 function AboutPage(){

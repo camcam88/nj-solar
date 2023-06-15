@@ -7,7 +7,7 @@ export default function InforCard({number, text}){
                 <p className='text-2xl p-0'>{number}</p>
             </div>
             <div className='px-8 h-32'>
-                <p className='text-black text-left text-lg align-text-bottom'>{text}</p>
+                <p className='text-black text-left text-2xl align-text-bottom'>{text}</p>
             </div>
         </div>
     )

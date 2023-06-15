@@ -2,7 +2,7 @@ import React from 'react';
 import { StaticImage } from "gatsby-plugin-image"
 
 import Menu from './Menu'
-import GetStartedBtn from '../utils/GetStartedButton'
+
 import { Link } from 'gatsby';
 
 function NavBar() {

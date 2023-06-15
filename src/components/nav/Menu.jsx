@@ -2,16 +2,32 @@ import React from 'react';
 import { Link } from "gatsby"
 
 import './menu.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Menu(){
     const [hidden, setHidden] = useState(true)
 
 
     const handleClick = ()=>{
-        console.log('Menu Click', hidden)
         setHidden(!hidden)
     }
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+        if (!hidden && !event.target.closest('.menuIcon')) {
+            setHidden(true);
+        }
+        };
+    
+        if (typeof window !== 'undefined') {
+            document.addEventListener('click', handleClickOutside);
+    
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
+        }
+    }, [hidden]);
+
     const MBtn = ()=> {
         return(
         <button onClick={ handleClick } type='button' className="menuIcon">

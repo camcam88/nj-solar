@@ -3,12 +3,13 @@ import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useState } from 'react';
 
+import UnitSize from './UnitSize';
+
 import PanleRow from './PanleRow'
 import PannelCard from './PanelCard'
-import Swiper from './Swiper'
 
 import {useForm} from '../../Context/systemContext'
-import {useExposure, useMinKUpdate, useMinWat, usePPW, usePrice} from '../../Context/ppwContext'
+import {useExposure, useMinWat, usePPW, usePrice, useSetUsage} from '../../Context/ppwContext'
 import ZipCheck from './ZipCheck'
 
 import './form.css'
@@ -17,30 +18,22 @@ export default function BasicForm(props){
     const [error, setError] = useState();
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(false);
-    const [unitSize, setUnitSize] = useState(0);
     const [untitSizeSet, setUntitSizeSet] = useState(false)
+
     const [zipState, setZipState] = useState(true);
     const system = useForm()
     const exposure = useExposure()
-    const changeMinK = useMinKUpdate()
+
     const minWat =useMinWat();
     const ppw = usePPW();
     const price = usePrice();
-    
+    const setannualUsage = useSetUsage()
+
     let domainName
     if (typeof window !== 'undefined') {
         domainName = window.location.hostname;
         }
 
-    const handleChange = (e)=>{
-        const kWatts = e.target.value
-        console.log('CHANGED', kWatts)
-        setUnitSize(kWatts * exposure)
-    }
-    const handleClick = ()=>{
-        changeMinK(unitSize)
-        setUntitSizeSet(true)
-    }
     // https://build-c30756c0-e33a-42e8-a5d9-d3c2f5c36572.gatsbyjs.io/start
     // https://njsolar.gatsbyjs.io/.netlify/functions/submitRequest
 
@@ -73,6 +66,9 @@ export default function BasicForm(props){
         }
     };
 
+    const handleChange = (set)=>{
+        setUntitSizeSet(set)
+    }
 
     return(
         <div className='text-black'>
@@ -97,23 +93,43 @@ export default function BasicForm(props){
             <Form className='solarForm flex flex-col items-center'>
                 {zipState? <ZipCheck/> : ''}
                 {
-                untitSizeSet ?
+                    // only show the unit size if the untitSizeSet is true  
+                    // otherwise show the panel selection
+                !untitSizeSet? <UnitSize onSetUntitSizeSet={handleChange}/> :
                 <>
-                    <label className='label max-w-5xl mt-8 pl-1.5' htmlFor="Panel">Panel</label>
-                    <p className='text-left mb-6 text-slate-500 font-light' >Choose a system.</p>
+                    <label 
+                        className='label max-w-5xl mt-8 pl-1.5' 
+                        htmlFor="Panel">Panel</label>
+                    <p 
+                        className='text-left mb-6 text-slate-500 font-light' 
+                        >Choose a system.</p>
                     <PanleRow> 
                         <PannelCard lable='QCELL 365' tag='qcell'/>
                         <PannelCard lable='SOLARIA 370' tag='solaria'/>
                         <PannelCard lable='TRINA 390' tag='trina'/>
                         <PannelCard lable='REC 405' tag='rec'/>
                     </PanleRow>
-                    <label className='label max-w-5xl mt-8 mb-6' htmlFor="firstName">First Name</label>
-                    <Field className='Field max-w-5xl' id="firstName" name="firstName" placeholder="Jane" disabled={loading}/>
-
-                    <label className='label max-w-5xl mb-6' htmlFor="lastName">Last Name</label>
-                    <Field className='Field max-w-5xl' id="lastName" name="lastName" placeholder="Doe" disabled={loading}/>
-
-                    <label className='label max-w-5xl mb-6' htmlFor="email" disabled={loading}>Email</label>
+                    <h1>Cost: {price}</h1>
+                    <label 
+                        className='label max-w-5xl mt-8 mb-6' 
+                        htmlFor="firstName">First Name</label>
+                    <Field 
+                        className='Field max-w-5xl' 
+                        id="firstName" name="firstName" 
+                        placeholder="Jane" disabled={loading}/>
+                    <label 
+                        className='label max-w-5xl mb-6' 
+                        htmlFor="lastName">Last Name</label>
+                    <Field 
+                        className='Field max-w-5xl' 
+                        id="lastName" 
+                        name="lastName" 
+                        placeholder="Doe" 
+                        disabled={loading}/>
+                    <label 
+                        className='label max-w-5xl mb-6' 
+                        htmlFor="email" 
+                        disabled={loading}>Email</label>
                     <Field
                         id="email"
                         name="email"
@@ -127,18 +143,11 @@ export default function BasicForm(props){
                         type="potHead"
                         className="hidden"
                     />
-                    <button className='Field submit mt-6 max-w-5xl' type="submit" disabled={loading}>{loading? 'Placing Order...' : 'Submit Order'}</button>
+                    <button 
+                        className='Field submit mt-6 max-w-5xl' 
+                        type="submit" 
+                        disabled={loading}>{loading? 'Placing Order...' : 'Submit Order'}</button>
                 </>    
-                :
-                <>
-                <label className='label max-w-5xl mt-6 pl-1.5' htmlFor="exposure">Sun Exposure</label>
-                <p className='text-left mb-6 text-slate-500 font-light' >How much sun exposure does your house have?</p>
-                <Swiper/>
-                <label className='label max-w-5xl mt-12 pl-1.5' htmlFor="unitSize">Unit Size</label>
-                <p className='text-left mb-6 text-slate-500 font-light' >How much energy does your house need?</p>
-                <Field className='Field max-w-5xl mt-4 mb-8' id="unitSize" name="unitSize" type='number' placeholder="0" onChange={handleChange} disabled={untitSizeSet} />
-                <button className='Field submit mt-6 max-w-5xl' type="button" onClick={handleClick} disabled={loading}>Continue</button>
-                </>
                 }
             </Form>
         </Formik>
@@ -147,3 +156,4 @@ export default function BasicForm(props){
         </div>
     )
 }
+

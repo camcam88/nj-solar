@@ -1,9 +1,11 @@
 import React, {createContext, useState, useContext} from 'react';
 
+import PPW from './ppw';
+
 const PpwContext = createContext();
 const MinKContext = createContext();
-const PpwUpdateContext = createContext();
-const MinKUpdateContext = createContext();
+const PriceUpdateContext = createContext();
+const annualUsageContext = createContext();
 const ExposureContext = createContext();
 const ExpsoureUpdateContext = createContext();
 const ReturnPPWContext = createContext();
@@ -13,14 +15,14 @@ const PriceContext = createContext();
 export function usePPW() {
     return useContext(PpwContext)
 }
-export function usePPWUpdate() {
-    return useContext(PpwUpdateContext)
+export function usePriceUpdate() {
+    return useContext(PriceUpdateContext)
 }
 export function useMinWat() {
     return useContext(MinKContext)
 }
-export function useMinKUpdate() {
-    return useContext(MinKUpdateContext)
+export function useSetUsage() {
+    return useContext(annualUsageContext)
 }
 
 export function useExposure() {
@@ -39,104 +41,22 @@ export function usePrice() {
 
 export function PpwProvider({children}) {
     const [ppwState, setPpwState] = useState(0);
-    const [minWattsState, setMinWattsState] = useState(4);
+    const [minKWattsState, setMinKWattsState] = useState(0);
     const [priceState, setPriceState] = useState(0);
     const [exposureState, setExposureState] = useState(1);
     const [unitSize, setUnitSize] = useState(0);
+    const [annualUsage, setannualUsage] = useState();
 
-    const PPW = {
-        4: {
-            qcell: 3.46,
-            solaria: 3.46,
-            trina:3.42,
-            rec:3.79,
-        },
-        5: {
-            qcell: 3.06,
-            solaria: 3.06,
-            trina:3.02,
-            rec:3.79,
-        },
-        6: {
-            qcell: 3.04,
-            solaria: 2.96,
-            trina:2.92,
-            rec:3.79,
-        },
-        7: {
-            qcell: 2.94,
-            solaria: 2.86,
-            trina:2.82,
-            rec:3.19,
-        },
-        8: {
-            qcell: 2.89,
-            solaria: 2.81,
-            trina:2.77,
-            rec:3.14,
-        },
-        9: {
-            qcell: 2.84,
-            solaria: 2.76,
-            trina:2.72,
-            rec:3.09,
-        },
-        10: {
-            qcell: 2.79,
-            solaria: 2.71,
-            trina:2.67,
-            rec:3.04,
-        },
-        11: {
-            qcell: 2.77,
-            solaria: 2.69,
-            trina:2.65,
-            rec:3.02,
-        },
-        12: {
-            qcell: 2.74,
-            solaria: 2.66,
-            trina:2.62,
-            rec:2.99,
-        },
-        13: {
-            qcell: 2.70,
-            solaria: 2.62,
-            trina:2.58,
-            rec:2.95,
-        },
-        14: {
-            qcell: 2.64,
-            solaria: 2.60,
-            trina:2.56,
-            rec:2.93,
-        },
-        15: {
-            qcell: 2.66,
-            solaria: 2.58,
-            trina:2.54,
-            rec:2.91,
-        },
-        16: {
-            qcell: 2.63,
-            solaria: 2.55,
-            trina:2.51,
-            rec:2.88,
-        },
-        17: {
-            qcell: 2.60,
-            solaria: 2.52,
-            trina:2.51,
-            rec:2.85,
-        },
-        18: {
-            qcell: 2.58,
-            solaria: 2.50,
-            trina:2.61,
-            rec:2.83,
-        },
+    // calulate the annual usage based on the monthly bill
+    function setUsuage(number){
+        console.log("number: ", number);
+        // annual consumption = (number / .175) X 12
+        const annualConsumption = (number / .175) * 12
+        console.log("annualConsumption: ", annualConsumption);
+        setannualUsage(annualConsumption)
     }
 
+    // search through the object using the key and return the value
     function search(nameKey, obj) {
         if (obj.hasOwnProperty(nameKey)) {
         return obj[nameKey];
@@ -147,36 +67,51 @@ export function PpwProvider({children}) {
         return res ? obj[res] : false;
         }
     }
+
+    // use the search function on the PPW object to find the PPW based on the minimum k watts needed 
+    // and the panel system name
     function returnPPW(system){
-        console.log("system: ", system);
-        console.log("minWattsState: ", minWattsState);
+        // a const that's assigned the last three digits of the system name 
+        const systemWatts = system.slice(-3)
+        console.log("systemWatts: ", systemWatts);
+        // to find the number of panels needed we divide the annual usage by system watts,
+        console.log("annualUsage: ", annualUsage);
+        const numberOfPanels = Math.ceil(annualUsage/systemWatts)
+        console.log("numberOfPanels: ", numberOfPanels);
 
-        return search(system, PPW[minWattsState]);
+        // then we multiply that by the system watts to get the total watts needed
+        const totalWatts = numberOfPanels * systemWatts
+
+        // then we divide that by 1000 to get the total kilowatts needed and round to the nearest whole number. this number cannot be smaller than 4 or larger than 25
+        const totalKWatts = Math.min(Math.max(Math.round(totalWatts/1000), 4), 25)
+
+        // then we set the unit size to the total kilowatts
+        setUnitSize(totalWatts)
+        setMinKWattsState(totalKWatts)
+        //  then we only return the ppw based on the system name and total kilowatts needed if kilowatts is not undefined
+        return totalKWatts && search(system, PPW[totalKWatts]);
     }
 
-    function changePPW(system){
-        setPpwState(search(system, PPW[minWattsState]))
-        let Totat = search(system, PPW[minWattsState]) * unitSize
+    function changePrice(system){
+        setPpwState(search(system, PPW[minKWattsState]))
+        console.log('PPW: ', search(system, PPW[minKWattsState]));
+        let Totat = search(system, PPW[minKWattsState]) * unitSize
+        console.log('minKWattsState: ', minKWattsState);
+        console.log('unitSize: ', unitSize);
+        console.log("Totat: ", Totat);
         let Srecs = unitSize/1000 * 85 *15
+        console.log("Srecs: ", Srecs);
+
         let discount =  Totat * .7
+        console.log("discount: ", discount);
+
         let SrecsPrice = discount - Srecs
+        console.log("SrecsPrice: ", SrecsPrice);
+
         let commas = Math.trunc(SrecsPrice).toLocaleString("en-US");
+        console.log("commas: ", commas);
+    
         setPriceState(commas)
-    }
-
-    function changeWatts(number){
-        const k = Math.trunc(number/1000)
-        let num = 0
-        if(k < 4){
-            num = 4
-        }
-        if (k > 18){
-            num = 18
-        }
-        if (k > 4 && k < 18){num = k;}
-
-        setMinWattsState(num)
-        setUnitSize(number)
     }
 
     function chageExposure (exposure){
@@ -184,10 +119,10 @@ export function PpwProvider({children}) {
     }
     return (
         <PpwContext.Provider value={ppwState}>
-            <PpwUpdateContext.Provider value={changePPW}>
+            <PriceUpdateContext.Provider value={changePrice}>
                 <ReturnPPWContext.Provider value={returnPPW}>
-                    <MinKContext.Provider value={minWattsState}>
-                        <MinKUpdateContext.Provider value={changeWatts}>
+                    <MinKContext.Provider value={minKWattsState}>
+                        <annualUsageContext.Provider value={setUsuage}>
                             <ExposureContext.Provider value={exposureState}>
                                 <ExpsoureUpdateContext.Provider value={chageExposure}>
                                     <PriceContext.Provider value={priceState}>
@@ -195,10 +130,10 @@ export function PpwProvider({children}) {
                                     </PriceContext.Provider>
                                 </ExpsoureUpdateContext.Provider>
                             </ExposureContext.Provider>
-                        </MinKUpdateContext.Provider>
+                        </annualUsageContext.Provider>
                     </MinKContext.Provider>
                 </ReturnPPWContext.Provider>
-            </PpwUpdateContext.Provider>
+            </PriceUpdateContext.Provider>
         </PpwContext.Provider>
     )
 }

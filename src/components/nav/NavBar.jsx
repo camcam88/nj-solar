@@ -1,7 +1,6 @@
 import React from 'react';
 import { StaticImage } from "gatsby-plugin-image"
 
-import LinkList from './LinkList'
 import Menu from './Menu'
 
 import { Link } from 'gatsby';

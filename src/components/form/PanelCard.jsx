@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
 import {useForm, useFormUpdate} from '../../Context/systemContext'
-import { usePPWUpdate, useReturnPPW} from '../../Context/ppwContext'
+import { usePriceUpdate, useReturnPPW} from '../../Context/ppwContext'
 // import pannelImag from '../../images/qcell365.png'
 function RadioBtn({lable, pannelImag}){
     const [ppwState, setPpwState] = useState();
     const sytem = useForm()
     const changeSystem = useFormUpdate()
-    const setSystem = usePPWUpdate()
+    const setSystem = usePriceUpdate()
     const PPW = useReturnPPW();
 
 
@@ -20,14 +20,12 @@ function RadioBtn({lable, pannelImag}){
         changeSystem(lable)
         setSystem(lable)
     }
-    
+
     return(
         <button id={lable} type='button'
         onClick={handlePanelClick}
         className={sytem == lable? `text-center
-        text-black
         text-lg
-        shadow-md
         shadow-inner
         shadow-blue-500/50
         rounded-md
