@@ -60,7 +60,7 @@ function HeroPage() {
                 text-3xl 
                 font-sans
                 font-bold'>
-                Simple Easy No Dopsite
+                Simple Easy No Depsoite
             </h2>
             <h3 className='
                 text-base
@@ -69,7 +69,7 @@ function HeroPage() {
                 mb-24
                 mt-8
                 px-4
-                '>30 Year Warranty on: Parts, Labor and Panel Performance.</h3>
+                '>30 year warranty on: parts, labor andpPanel performance.</h3>
             <GSButton />
             <div className='hidden lg:block my-12'>
                 {/* <StaticImage 
