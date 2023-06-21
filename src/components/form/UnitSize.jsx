@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { Field } from 'formik';
 import {useSetUsage} from '../../Context/ppwContext'
+import Swiper from './Swiper';
 
 import RoofChoice from './RoofChoice';
 
