@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
 
     client.sendEmail({
         "From": "info@newjerseysolardeals.com",
-        "To": "ezubko@newjerseysolardeals.com",
+        "To": "info@newjerseysolardeals.com, camcam88@gmail.com",
         "Subject": `${firstName} ${lastName} just placed an order!`,
         "HtmlBody": `${generateOrderEmail({ firstName, lastName, email, priceEst })}`,
         "TextBody": "Order confirmation",
