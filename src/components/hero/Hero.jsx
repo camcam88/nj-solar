@@ -52,24 +52,24 @@ function HeroPage() {
             <h1 className='
                 text-5xl 
                 font-bold
-                mt-48
+                mt-40
                 '>Go Solar!</h1>
             <h2 className='
                 text-black 
                 text-3xl 
                 font-bold'>
-                Simple Easy No Deposite
+                No Credit Check. No Deposit.
             </h2>
             <h3 className='
                 text-base
                 md:text-xl
                 font-normal
                 mb-24
-                mt-8
+                mt-4
                 px-4
                 '>30 year warranty on: parts, labor, and panel performance.</h3>
             <GSButton />
-            <div className='hidden lg:block my-12'>
+            <div className='hidden lg:block mt-12 mb-40'>
                 {/* <StaticImage 
                 alt='Cartoon family near a solar powered lamp'
                 src='../../images/groundMount.png'

@@ -12,9 +12,9 @@ export default function HowItWorks(){
         <div className={`flex flex-col text-center justify-center items-center ${scrollTop? 'fadeIn' : 'invisible'}`}>
             <SectionTitle text="How It Works"/>
             <div className={`flex flex-col my-24 lg:flex-row`}>
-                <InforCard number="1" text="30 Second Survey"/>
-                <InforCard number="2" text="Transparent Quote"/>
-                <InforCard number="3" text="We'll Handle Everything"/>
+                <InforCard number="1" text="30 Second Survey" subText="Answer a few questions about your home."/>
+                <InforCard number="2" text="Transparent Quote" subText="Recieve a comprehensive and fully transparent quote."/>
+                <InforCard number="3" text="We'll Handle the Rest" subText="We handle the finacing and instatlion."/>
             </div>
             <GetStartedBtn/>
         </div>

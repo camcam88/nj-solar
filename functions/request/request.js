@@ -1,5 +1,4 @@
-const nodemailer = require('nodemailer');
-
+const postmark = require("postmark");
 
 // generate a test email    
 const generateOrderEmail = ({ firstName, lastName, email, priceEst }) => `
@@ -9,16 +8,7 @@ const generateOrderEmail = ({ firstName, lastName, email, priceEst }) => `
     </div>
 `
 
-
-// create a transport for Nodemailer
-const transporter = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: 587,
-    auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-    }
-});
+const client = new postmark.ServerClient("cdf497ae-e52f-4c70-a9c0-372b602e8b53");
 
 exports.handler = async (event, context) => {
     console.log('body: ', JSON.parse(event.body))
@@ -33,18 +23,18 @@ exports.handler = async (event, context) => {
         }
     }
 
-    // send the message
-    const info = await transporter.sendMail({
-        from: "test@example.com",
-        to: `NJsolar@example.com, ${email}`,
-        subject: `New Request!`,
-        html: generateOrderEmail({ firstName, lastName, email, priceEst })
-    })
-    console.log('info: ', info)
+    client.sendEmail({
+        "From": "info@newjerseysolardeals.com",
+        "To": "ezubko@newjerseysolardeals.com",
+        "Subject": `${firstName} ${lastName} just placed an order!`,
+        "HtmlBody": `${generateOrderEmail({ firstName, lastName, email, priceEst })}`,
+        "TextBody": "Order confirmation",
+        "MessageStream": "outbound"
+    });
 
     return {
         statusCode: 200,
-        body: JSON.stringify(info)
+        body: JSON.stringify({message:'test'})
     }
 }
 
