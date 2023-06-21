@@ -8,7 +8,7 @@ const generateOrderEmail = ({ firstName, lastName, email, priceEst }) => `
     </div>
 `
 
-const client = new postmark.ServerClient("cdf497ae-e52f-4c70-a9c0-372b602e8b53");
+const client = new postmark.ServerClient(process.env.MAIL_KEY);
 
 exports.handler = async (event, context) => {
     console.log('body: ', JSON.parse(event.body))
