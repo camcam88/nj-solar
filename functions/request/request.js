@@ -23,18 +23,25 @@ exports.handler = async (event, context) => {
         }
     }
 
-    client.sendEmail({
+    const message = {
         "From": "info@newjerseysolardeals.com",
         "To": "info@newjerseysolardeals.com, camcam88@gmail.com",
         "Subject": `${firstName} ${lastName} just placed an order!`,
         "HtmlBody": `${generateOrderEmail({ firstName, lastName, email, priceEst })}`,
         "TextBody": "Order confirmation",
         "MessageStream": "outbound"
+    }
+    client.sendEmail(message)
+        .then(response => {
+            console.log('Email sent successfully:', response.Message);
+        })
+        .catch(error => {
+            console.error('Error sending email:', error);
     });
 
     return {
         statusCode: 200,
-        body: JSON.stringify({message:'test'})
+        body: JSON.stringify({message:'success'})
     }
 }
 
