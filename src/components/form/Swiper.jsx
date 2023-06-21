@@ -9,7 +9,6 @@ export default ()=> {
     const setExpsore = useExposureUpdate();
 
     const handleClick =(e)=>{
-        console.log('Clicked', e.target.id)
         const target = e.target.id
         setChoice(target)
         setExpsore(target)

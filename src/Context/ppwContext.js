@@ -49,10 +49,8 @@ export function PpwProvider({children}) {
 
     // calulate the annual usage based on the monthly bill
     function setUsuage(number){
-        console.log("number: ", number);
         // annual consumption = (number / .175) X 12
         const annualConsumption = (number / .175) * 12
-        console.log("annualConsumption: ", annualConsumption);
         setannualUsage(annualConsumption)
     }
 
@@ -73,11 +71,11 @@ export function PpwProvider({children}) {
     function returnPPW(system){
         // a const that's assigned the last three digits of the system name 
         const systemWatts = system.slice(-3)
-        console.log("systemWatts: ", systemWatts);
+
         // to find the number of panels needed we divide the annual usage by system watts,
-        console.log("annualUsage: ", annualUsage);
+
         const numberOfPanels = Math.ceil(annualUsage/systemWatts)
-        console.log("numberOfPanels: ", numberOfPanels);
+
 
         // then we multiply that by the system watts to get the total watts needed
         const totalWatts = numberOfPanels * systemWatts
@@ -94,22 +92,17 @@ export function PpwProvider({children}) {
 
     function changePrice(system){
         setPpwState(search(system, PPW[minKWattsState]))
-        console.log('PPW: ', search(system, PPW[minKWattsState]));
+
         let Totat = search(system, PPW[minKWattsState]) * unitSize
-        console.log('minKWattsState: ', minKWattsState);
-        console.log('unitSize: ', unitSize);
-        console.log("Totat: ", Totat);
+
         let Srecs = unitSize/1000 * 85 *15
-        console.log("Srecs: ", Srecs);
+
 
         let discount =  Totat * .7
-        console.log("discount: ", discount);
 
         let SrecsPrice = discount - Srecs
-        console.log("SrecsPrice: ", SrecsPrice);
 
         let commas = Math.trunc(SrecsPrice).toLocaleString("en-US");
-        console.log("commas: ", commas);
     
         setPriceState(commas)
     }

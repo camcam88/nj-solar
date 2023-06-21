@@ -1,10 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 :root {
   --border-radius: 4px;
   --color-text: rgb(255, 255, 255);
   --color-primary: #070811;
   --color-code-bg: #fff4db;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-sans: 'Varela Round', sans-serif;
   --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --font-lg: 18px;
@@ -27,7 +28,7 @@
 html {
   -webkit-text-size-adjust: 100%;
   box-sizing: border-box;
-  font: sans-serif;
+  font-family: 'Varela Round', sans-serif;
   font-size: var(--font-md);
   line-height: var(--line-height-normal);
   overflow-y: scroll;
@@ -36,8 +37,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   color: var(--color-text);
-  font-family: sans-serif;
-  font-family: var(--font-sans);
+  font-family: 'Varela Round', sans-serif;
   font-weight: normal;
   margin: 0;
   word-wrap: break-word;

@@ -10,8 +10,10 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-exports.handler = async (event, context) => {
+exports.handler = async (event, context, callback) => {
     const body = JSON.parse(event.body)
+    console.log('body: ', body)
+    console.log('event: ', event)
     //test send email
     if(body.potHead) {
         return {
@@ -39,9 +41,29 @@ exports.handler = async (event, context) => {
         headers.set('Access-Control-Allow-Origin', '*');
         headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
         headers.set('Access-Control-Allow-Headers', 'Content-Type');
-    return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({message:'Succes!'}),
-    }
+        try {
+            // Perform necessary operations
+            console.log('info try: ', info)
+            const response = {
+                statusCode: 200,
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: 'Success' }),
+            };
+            console.log('response: ', response)
+
+            callback(null, response);
+            } catch (error) {
+                console.log('error: ', error)
+            const errorResponse = {
+                statusCode: 500,
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ error: 'Internal Server Error' }),
+            };
+        
+            callback(null, errorResponse);
+        }
 }

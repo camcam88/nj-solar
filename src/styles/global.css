@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 :root {
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-sans: roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen,
     --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
     --line-height-normal: 1.5;
@@ -22,8 +21,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     color: var(--color-text);
-    font-family: sans-serif;
-    font-family: var(--font-sans);
+    font-family: 'Varela Round', sans-serif;
     font-weight: normal;
     margin: 0;
     word-wrap: break-word;

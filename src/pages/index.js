@@ -6,7 +6,6 @@ import Seo from "../components/seo"
 import Main from '../components/main/Main'
 import PromoBanner from '../components/PromoBanner'
 import NavBar from '../components/nav/NavBar'
-import Footer from '../components/footer/Footer'
 
 
 function IndexPage(){

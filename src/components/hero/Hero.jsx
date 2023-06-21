@@ -51,14 +51,12 @@ function HeroPage() {
         >
             <h1 className='
                 text-5xl 
-                font-sans
                 font-bold
                 mt-48
                 '>Go Solar!</h1>
             <h2 className='
                 text-black 
                 text-3xl 
-                font-sans
                 font-bold'>
                 Simple Easy No Deposite
             </h2>

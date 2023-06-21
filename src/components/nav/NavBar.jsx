@@ -23,8 +23,8 @@ function NavBar() {
             <Link to='../'>
                     <StaticImage 
                         src='../../images/NJSolarDeals.svg'
-                        height={65}
-                        width={90}
+                        height={82}
+                        width={100}
                         /></Link>
 
 

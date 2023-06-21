@@ -40,29 +40,27 @@ export default function BasicForm(props){
     const handleSubmit = async (values) => {
         setLoading(true);
         const formData = values
-        formData.exposure = exposure
-        formData.minWat = minWat
+        console.log("formData", formData)
         formData.system = system
-        formData.ppw = ppw
         formData.priceEst = price
-        console.log("formData: ", formData)
-        const response = await fetch(`https://njsolar.gatsbyjs.io/.netlify/functions/submitRequest`, {
+
+        const response = await fetch(`/.netlify/functions/request`, {
         method: 'POST',
         body: JSON.stringify(formData),
         });
         const text = JSON.parse(await response.text());
         
+        console.log('text: ', text)
+
         if (response.ok) {
             // handle success
             setMessage(text.message)
             setLoading(false);
-            console.log('Succes:', text.message)
         } else {
             // handle error
             setLoading(false);
             setMessage(text.message)
             setError("Error!");
-            console.log('ERR:', text.message)
         }
     };
 
@@ -78,10 +76,7 @@ export default function BasicForm(props){
                 lastName: '',
                 email: '',
                 potHead:'',
-                exposure: exposure,
-                minWat: minWat,
                 system: system,
-                ppw: ppw,
                 priceEst: price,
             }}
             onSubmit={async (values) => {
@@ -109,11 +104,11 @@ export default function BasicForm(props){
                         <PannelCard lable='TRINA 390' tag='trina'/>
                         <PannelCard lable='REC 405' tag='rec'/>
                     </PanleRow>
-                    <h1>Cost: {price}</h1>
+                    <h1 className='font-semibold mt-24' >Total Before Incentives: {price}</h1>
                     <label 
-                        className='label max-w-5xl mt-8 mb-6' 
+                        className='label max-w-5xl mt-8 mb-6'
                         htmlFor="firstName">First Name</label>
-                    <Field 
+                    <Field  
                         className='Field max-w-5xl' 
                         id="firstName" name="firstName" 
                         placeholder="Jane" disabled={loading}/>

@@ -46,7 +46,7 @@ function Menu(){
             <div 
             className={hidden? 'hidden' : 'menuLinks'}>
                             <NavLink to='../about' name='About Us'/> 
-                            <NavLink to='../area' name='Coverage Area'/> 
+                            <NavLink to='../coverage' name='Coverage Area'/> 
                             <NavLink to='../faq' name='FAQ'/> 
             </div>
         </div>

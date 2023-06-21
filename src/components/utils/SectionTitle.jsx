@@ -8,7 +8,6 @@ export default function SectionTitle({text}){
         className='
         mt-20
         text-black
-        font-sans
         font-medium
         text-4xl
         '
