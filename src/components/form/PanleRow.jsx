@@ -1,8 +1,6 @@
 import React from 'react';
 import PannelCard from './PanelCard'
 
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 import q from '../../images/qcell.svg'
 import s from '../../images/solaria.svg'

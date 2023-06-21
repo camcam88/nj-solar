@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Field } from 'formik';
 import {useSetUsage} from '../../Context/ppwContext'
 
-import Swiper from './Swiper'
 import RoofChoice from './RoofChoice';
 
 // q: how to pass the value of the annual usage to the next form?
