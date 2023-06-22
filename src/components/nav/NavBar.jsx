@@ -23,7 +23,7 @@ function NavBar() {
             '>
             <Link to='../'>
                     <StaticImage 
-                        src='../../images/NJSolarDeals.svg'
+                        src='../../images/NJSolarDeals.png'
                         className='logoIcon'
             /></Link>
             <Menu/>

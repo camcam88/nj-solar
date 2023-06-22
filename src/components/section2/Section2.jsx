@@ -24,7 +24,7 @@ function Section2(){
             pb-20 
             ${scrollTop? 'fadeIn' : 'invisible'}`}>
             <SectionTitle text='Lowest Price In Solar'/>
-            <StaticImage alt='NJ Solar Logo' src='../../images/NJSolarDeals.svg' className='w-1/4 mx-auto mt-20'/>
+            <StaticImage alt='NJ Solar Logo' src='../../images/NJSolarDeals.png' className='w-1/4 mx-auto mt-20'/>
             <SectionText text='Our unique software allows us to cut out the salespeople and pass the savings directly to you. Using NJ Solar provides clients with average quotes 50% lower than traditional solar companies.'/>
             <GetStartedBtn/>
         </div>
