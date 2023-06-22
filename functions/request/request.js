@@ -8,7 +8,7 @@ const generateOrderEmail = ({ firstName, lastName, email, priceEst }) => `
     </div>
 `
 
-const client = new postmark.ServerClient(process.env.MAIL_KEY);
+const client = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN, { requestTimeout: 300000 } );
 
 exports.handler = async (event, context) => {
     console.log('body: ', JSON.parse(event.body))
@@ -31,6 +31,7 @@ exports.handler = async (event, context) => {
         "TextBody": "Order confirmation",
         "MessageStream": "outbound"
     }
+    
     client.sendEmail(message)
         .then(response => {
             console.log('Email sent successfully:', response.Message);
@@ -38,6 +39,8 @@ exports.handler = async (event, context) => {
         .catch(error => {
             console.error('Error sending email:', error);
     });
+    
+    console.log('message: ', message)
 
     return {
         statusCode: 200,
