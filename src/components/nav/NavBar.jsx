@@ -2,6 +2,7 @@ import React from 'react';
 import { StaticImage } from "gatsby-plugin-image"
 
 import Menu from './Menu'
+import './nav.css'
 
 import { Link } from 'gatsby';
 
@@ -23,10 +24,8 @@ function NavBar() {
             <Link to='../'>
                     <StaticImage 
                         src='../../images/NJSolarDeals.svg'
-                        className='h-20 w-24'
-                        /></Link>
-
-
+                        className='logoIcon'
+            /></Link>
             <Menu/>
         </div>
     );
