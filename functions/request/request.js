@@ -15,14 +15,6 @@ exports.handler = async (event, context) => {
     const { firstName, lastName, email, priceEst } = JSON.parse(event.body)
     const requiredFields = [firstName, lastName, email, priceEst]
 
-    // check if all required fields are filled out
-    if (!requiredFields.every(field => field)) {
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ message: `Required information is missing. Field: ${field}` })
-        }
-    }
-
     const message = {
         "From": "info@newjerseysolardeals.com",
         "To": "info@newjerseysolardeals.com, camcam88@gmail.com",
@@ -45,6 +37,13 @@ exports.handler = async (event, context) => {
     return {
         statusCode: 200,
         body: JSON.stringify({message:'success'})
+    }
+    // check if all required fields are filled out
+    if (!requiredFields.every(field => field)) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ message: `Required information is missing. Field: ${field}` })
+        }
     }
 }
 
