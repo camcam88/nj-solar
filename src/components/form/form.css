@@ -102,13 +102,13 @@ label{
     flex-direction: column;
     position: absolute;
     background-color: rgb(247, 247, 247);
-    height: 55vh;
+    height: 30rem;
     width: 30vw;
     z-index: 50;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8px;
     align-content: center;
-    padding-top: 6rem;
+    padding-top: 4rem;
     padding-left: 2rem;
     padding-right: 2rem;
     min-width: 22rem;

@@ -7,6 +7,8 @@ import UnitSize from './UnitSize';
 
 import PanleRow from './PanleRow'
 import PannelCard from './PanelCard'
+import Install from './Install'
+import Payment from './Payment'
 
 import {useForm} from '../../Context/systemContext'
 import {useExposure, useMinWat, usePPW, usePrice, useSetUsage} from '../../Context/ppwContext'
@@ -93,7 +95,7 @@ export default function BasicForm(props){
                 !untitSizeSet? <UnitSize onSetUntitSizeSet={handleChange}/> :
                 <>
                     <label 
-                        className='label max-w-5xl mt-8 pl-1.5' 
+                        className='label max-w-5xl mt-8' 
                         htmlFor="Panel">Panel</label>
                     <p 
                         className='text-left mb-6 text-slate-500 font-light' 
@@ -104,9 +106,23 @@ export default function BasicForm(props){
                         <PannelCard lable='TRINA 390' tag='trina'/>
                         <PannelCard lable='REC 405' tag='rec'/>
                     </PanleRow>
-                    <h1 className='font-semibold mt-24' >Total Before Incentives: {price}</h1>
                     <label 
-                        className='label max-w-5xl mt-8 mb-6'
+                        className='label max-w-5xl mt-28' 
+                        htmlFor="Panel">Extras</label>
+                    <p 
+                        className='text-center sm:text-left sm:px-4 mb-6 text-slate-500 font-light' 
+                        >Choose to add extras like a full installation from our partners, or a Ephases home battery.</p>
+                    <Install/>
+                    <label 
+                        className='label max-w-5xl mt-28' 
+                        htmlFor="Panel">Payment Option</label>
+                    <p 
+                        className='text-left mb-6 text-slate-500 font-light' 
+                        >Select a payment option.</p>
+                    <Payment postPrice={price}/>
+
+                    <label 
+                        className='label max-w-5xl mt-28 mb-6'
                         htmlFor="firstName">First Name</label>
                     <Field  
                         className='Field max-w-5xl' 
@@ -130,6 +146,17 @@ export default function BasicForm(props){
                         name="email"
                         placeholder="jane@acme.com"
                         type="email"
+                        className='Field max-w-5xl' 
+                    />
+                    <label 
+                        className='label max-w-5xl mb-6' 
+                        htmlFor="address" 
+                        disabled={loading}>Home Address</label>
+                    <Field
+                        id="address"
+                        name="address"
+                        placeholder="1234 Main St"
+                        type="address"
                         className='Field max-w-5xl' 
                     />
                     <Field

@@ -40,7 +40,6 @@ function RadioBtn({lable, pannelImag}){
         justify-center
         items-center
         bg-[#5289C9]
-        hover:bg-[#75a6e797]
         font-bold
         text-white
         ` 
@@ -50,8 +49,6 @@ function RadioBtn({lable, pannelImag}){
         text-lg
         shadow-md
         shadow-slate-400
-        hover:shadow-inner
-        hover:shadow-slate-400
         rounded-md
         px-1
         py-3
@@ -62,9 +59,7 @@ function RadioBtn({lable, pannelImag}){
         flex
         flex-col
         justify-center
-        items-center
-        bg-[#f5f5f7]
-        hover:bg-[#567fb496]`}>
+        items-center`}>
             <img  src={pannelImag} 
             alt="pannelImag"
             className='h-44 sm:h-60

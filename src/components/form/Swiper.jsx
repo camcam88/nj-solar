@@ -22,7 +22,7 @@ export default ()=> {
             <StaticImage id='1.3' className={choice == "1.3"? "StaticImage h-56 choice" : 'StaticImage h-56' } src="../../images/shadedHouseNJ.png" alt="yellow house"/>
             </button>
             <button onClick={handleClick} type='button' className='exposureBtn w-1/3'>
-            <label className={choice == "1"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="PartialShade">Partial Shade</label>
+            <label className={choice == "1"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="PartialShade">Average</label>
             <StaticImage id='1' className={choice == "1"? "StaticImage h-56 choice" : 'StaticImage h-56' } src="../../images/avHouseNJ.png" alt="yellow house"/>
             </button>
             <button onClick={handleClick} type='button' className='exposureBtn w-1/3 ml-2'>

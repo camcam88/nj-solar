@@ -1,0 +1,11 @@
+.payOption{
+    /* border: solid 3px #5289C9; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+    height: 12rem;
+    min-width: 22rem;
+    width: 80vw;
+    max-width: 44rem;
+    text-align: center;
+    padding-top: 2rem;
+}

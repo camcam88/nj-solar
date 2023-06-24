@@ -1,0 +1,46 @@
+.install{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.addon{
+    border: solid 3px #5289C9;
+    border-radius: 10px;
+    width: 80vw;
+    max-width: 44rem;
+    min-width: 20rem;
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: space-around;
+}
+.addOnImage{
+    min-width: 6rem;
+    width: 18vw;
+    max-width: 10rem;
+}
+.addOnTitle{
+    color: #5289C9;
+    font-weight: bold;
+}
+.addOntext{
+    font-size: small;
+}
+.postCost{
+    margin-top: 1rem;
+
+}
+.preCost{
+    font-size: x-small;
+    color: rgb(90, 90, 90);
+}
+.addOnText-container{
+    min-width: 17rem;
+    width: 70vw;
+    max-width: 28rem;
+    height: 12rem;
+}

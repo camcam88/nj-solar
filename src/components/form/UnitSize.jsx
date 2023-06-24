@@ -30,14 +30,14 @@ function UnitSize({onSetUntitSizeSet}){
     return(
         <>
         <label 
-            className='label max-w-5xl mt-6 pl-1.5' 
+            className='label max-w-5xl mt-6' 
             htmlFor="exposure">Sun Exposure</label>
         <p 
             className='text-left mb-6 text-slate-500 font-light' 
             >How much sun exposure does your house have?</p>
         <Swiper/>
         <label 
-            className='label max-w-5xl mt-12 pl-1.5' 
+            className='label max-w-5xl mt-28' 
             htmlFor="unitSize">Energy Bill</label>
         <p 
             className='text-left mb-6 text-slate-500 font-light' 
@@ -46,12 +46,12 @@ function UnitSize({onSetUntitSizeSet}){
             className='Field max-w-5xl mt-4 mb-8' 
             id="energyBill" 
             name="energyBill" 
-            type='price' 
+            type='number' 
             placeholder="$0" 
             onChange={handleChange} 
             disabled={onSetUntitSizeSet} />
         <label 
-            className='label max-w-5xl mt-12 pl-1.5' 
+            className='label max-w-5xl mt-28' 
             htmlFor="unitSize">Roof Type?</label>
         <p 
             className='text-left mb-6 text-slate-500 font-light' 

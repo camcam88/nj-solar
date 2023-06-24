@@ -11,6 +11,7 @@ export default function SectionText({text}){
         text-2xl
         max-w-6xl
         font-medium
+        px-4
         '
         >{text}</p>
         </>
