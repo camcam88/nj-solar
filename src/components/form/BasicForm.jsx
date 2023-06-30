@@ -21,6 +21,7 @@ export default function BasicForm(props){
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(false);
     const [untitSizeSet, setUntitSizeSet] = useState(false)
+    const [payChoice, setPayChoice] = useState('')
 
     const [zipState, setZipState] = useState(true);
     const system = useForm()
@@ -42,7 +43,6 @@ export default function BasicForm(props){
     const handleSubmit = async (values) => {
         setLoading(true);
         const formData = values
-        console.log("formData", formData)
         formData.system = system
         formData.priceEst = price
 
@@ -51,8 +51,6 @@ export default function BasicForm(props){
         body: JSON.stringify(formData),
         });
         const text = JSON.parse(await response.text());
-        
-        console.log('text: ', text)
 
         if (response.ok) {
             // handle success
@@ -70,6 +68,10 @@ export default function BasicForm(props){
         setUntitSizeSet(set)
     }
 
+    const handlePayChange = (choice)=>{
+        setPayChoice(choice)
+    }
+
     return(
         <div className='text-black'>
             <Formik
@@ -80,6 +82,8 @@ export default function BasicForm(props){
                 potHead:'',
                 system: system,
                 priceEst: price,
+                payChoice: payChoice,
+                exposure: exposure,
             }}
             onSubmit={async (values) => {
                 await new Promise((r) => setTimeout(r, 500));
@@ -107,10 +111,10 @@ export default function BasicForm(props){
                         <PannelCard lable='REC 405' tag='rec'/>
                     </PanleRow>
                     <label 
-                        className='label max-w-5xl mt-28' 
+                        className='label max-w-5xl mt-40' 
                         htmlFor="Panel">Extras</label>
                     <p 
-                        className='text-center sm:text-left sm:px-4 mb-6 text-slate-500 font-light' 
+                        className='text-center sm:text-left sm:px-8 mb-6 mt-2 text-slate-500 font-light' 
                         >Choose to add extras like a full installation from our partners, or a Ephases home battery.</p>
                     <Install/>
                     <label 
@@ -119,7 +123,7 @@ export default function BasicForm(props){
                     <p 
                         className='text-left mb-6 text-slate-500 font-light' 
                         >Select a payment option.</p>
-                    <Payment postPrice={price}/>
+                    <Payment postPrice={price} onPayButtonClick={handlePayChange}/>
 
                     <label 
                         className='label max-w-5xl mt-28 mb-6'
@@ -140,7 +144,7 @@ export default function BasicForm(props){
                     <label 
                         className='label max-w-5xl mb-6' 
                         htmlFor="email" 
-                        disabled={loading}>Email</label>
+                        disabled={loading}>Email Address</label>
                     <Field
                         id="email"
                         name="email"

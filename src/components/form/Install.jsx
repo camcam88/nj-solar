@@ -1,4 +1,6 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { usePriceUpdate, usePrice, useInstallPrice, useBatteryPrice } from '../../Context/ppwContext';
 
 import './install.css'
 import install from '../../images/install.png'
@@ -7,17 +9,32 @@ import battery from '../../images/eBattery.png'
 import AddOn from './AddOn'
 
 export default function Install(props){
+    const price = usePrice();
+    
+    const setIPrice = useInstallPrice();
+    const setBPrice = useBatteryPrice();
+
+    const handleInstallClick = (e) => {
+        e.preventDefault()
+        setIPrice(5292.00)
+    }
+    const handleBatteryClick = (e) => {
+        e.preventDefault()
+        setBPrice(11200.00)
+    }
 
     return(
         <div className="install">
             <div className="addOn-container">
-                <AddOn 
-                    title='Full  Installation' 
+                <AddOn
+                    title='Full Installation' 
                     text="We've established relationships with top rated installers in your area to offer full install workmanshio warranty and a low fat install rate. Disable if you want a DIY option" 
                     preCost="7,560.00" 
-                    postCost="5,292.00" 
+                    postCost="5,292.00"
                     imageSrc={install} 
-                    alt='installer icon' />
+                    alt='installer icon'
+                    clickFunction={handleInstallClick}
+                    />
                 <AddOn 
                     title='Emphases IQ Battery' 
                     text="The Enphase IQ Battery system can combine as many as 3 IQ
@@ -25,7 +42,9 @@ export default function Install(props){
                     preCost="16,000.00" 
                     postCost="11,200.00" 
                     imageSrc={battery} 
-                    alt='installer icon' />
+                    alt='installer icon' 
+                    clickFunction={handleBatteryClick}
+                    />
             </div>
         </div>
     )

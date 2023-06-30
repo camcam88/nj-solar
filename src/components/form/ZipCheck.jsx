@@ -22,8 +22,22 @@ function ZipCheck (){
         }else{
             setError(true);
         }
-
     }
+
+    // set an event listener for keypress enter
+    
+
+    // on ketpress enter handle the click
+    const handleKeyPress = (e)=>{
+        if(e.key === 'Enter'){
+            handleClick();
+        }
+    }
+
+    // Q: how to listen for keypress enter in a formik react component?
+    // A: https://stackoverflow.com/questions/58050563/how-to-listen-for-keypress-enter-in-a-formik-react-component
+
+    
     const handleChange = (e)=>{
         setValue(e.target.value)
         setError(false)

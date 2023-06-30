@@ -16,7 +16,6 @@ function RadioBtn({lable, pannelImag}){
     });
 
     const handlePanelClick =(e)=>{
-        console.log('Clicked', lable)
         changeSystem(lable)
         setSystem(lable)
     }
@@ -26,8 +25,6 @@ function RadioBtn({lable, pannelImag}){
         onClick={handlePanelClick}
         className={sytem == lable? `text-center
         text-lg
-        shadow-inner
-        shadow-blue-500/50
         rounded-md
         px-1
         py-3
@@ -39,9 +36,8 @@ function RadioBtn({lable, pannelImag}){
         flex-col
         justify-center
         items-center
-        bg-[#5289C9]
+        bg-[#c9ddf3]
         font-bold
-        text-white
         ` 
         :
         `text-center
@@ -67,7 +63,7 @@ function RadioBtn({lable, pannelImag}){
             />
             <hr/>
             {lable} 
-            <span className={sytem == lable? `text-emerald-300 mb-2` 
+            <span className={sytem == lable? `text-emerald-600 mb-2` 
         :
         `font-semibold text-emerald-600 mb-2`}>
                 PPW: ${ppwState}

@@ -55,7 +55,7 @@ function UnitSize({onSetUntitSizeSet}){
             htmlFor="unitSize">Roof Type?</label>
         <p 
             className='text-left mb-6 text-slate-500 font-light' 
-            >Which of the following matches where you want you pannels installed?</p>
+            >Which of the following matches where you want the panels installed?</p>
         <RoofChoice/>
         <button className='Field submit mt-6 max-w-5xl' type="button" onClick={handleClick} disabled={loading}>Continue</button>
         </>

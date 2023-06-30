@@ -7,23 +7,28 @@ export default ()=> {
     const [choice, setChoice] = useState('')
 
     const handleClick =(e)=>{
-        const target = e.target.id
-        setChoice(target)
+        const target = e.target.id;
+        const parent = e.target.parentElement.id;
+
+        if(target === 'shingles' || parent === 'shingles') setChoice('shingles');   
+        if(target === 'ground' || parent === 'ground') setChoice('ground');
+        if(target === 'flat' || parent === 'flat') setChoice('flat');
+        console.log(target)
     }
 
     return (
         <div className='exposureRow  flex md:flex-row flex-col max-w-5xl mb-8'>
-            <button onClick={handleClick} type='button' className='roofBtn w-1/3 mr-2'>
-            <label className={choice == "1.3"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="Shaded">Shingles</label>
-            <StaticImage id='1.3' className={choice == "1.3"? "w-48 mx-4 mt-6" : 'w-48 mx-4 mt-6' } src="../../images/shingles.png" alt="yellow house"/>
+            <button onClick={handleClick} id='shingles' type='button' className={choice == 'shingles'? 'bg-[#c9ddf3] roofBtn w-1/3 mr-2': 'roofBtn w-1/3 mr-2'}>
+            <label className={choice == "shingles"? 'font-bold text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="shingles">Shingles</label>
+            <StaticImage id='shingles' className={choice == "shingles"? "w-48 mx-4 mt-6 -translate-y-6" : 'w-48 mx-4 mt-6 translate-y-1' } src="../../images/shingles.png" alt="Drawing ofa house with an angled roof with shingles"/>
             </button>
-            <button onClick={handleClick} type='button' className='roofBtn w-1/3'>
-            <label className={choice == "1"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="PartialShade">Ground Mount</label>
-            <StaticImage id='1' className={choice == "1"? "w-64 ml-6 mt-6" : 'w-64 ml-6 mt-6' } src="../../images/groundMount.png" alt="yellow house"/>
+            <button onClick={handleClick} id='ground' type='button' className={choice == 'ground'? 'bg-[#c9ddf3] roofBtn w-1/3 mr-2': 'roofBtn w-1/3 mr-2'}>
+            <label className={choice == "ground"? 'font-bold text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="ground">Ground Mount</label>
+            <StaticImage id='ground' className={choice == "ground"? "w-64 ml-6 mt-6 -translate-y-12" : 'w-64 ml-6 mt-6 -translate-y-6' } src="../../images/groundMount.png" alt="Drawing of a ground mounted solar panel"/>
             </button>
-            <button onClick={handleClick} type='button' className='roofBtn w-1/3 md:ml-2'>
-            <label className={choice == ".7"? 'choiceLabel text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="FullSun">Flat Roof</label>
-            <StaticImage id='.7' className={choice == ".7"? "w-40 mx-5 mt-6" : 'w-40 mx-5 mt-6' } src="../../images/flatRoof.png" alt="yellow house"/>
+            <button onClick={handleClick} id='flat' type='button' className={choice == 'flat'? 'bg-[#c9ddf3] roofBtn w-1/3 mr-2': 'roofBtn w-1/3 mr-2'}>
+            <label className={choice == "flat"? 'font-bold text-lg md:text-2xl' : 'text-lg md:text-2xl' } htmlFor="flat">Flat Roof</label>
+            <StaticImage id='flat' className={choice == "flat"? "w-40 mx-5 mt-6 -translate-y-2" : 'w-40 mx-5 mt-6 translate-y-2' } src="../../images/flatRoof.png" alt="Drawing of a building with a flat roof"/>
             </button>
         </div>
     );

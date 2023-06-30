@@ -9,3 +9,14 @@
     text-align: center;
     padding-top: 2rem;
 }
+
+.payChoice{
+    border-radius: 8px;
+    height: 12rem;
+    min-width: 22rem;
+    width: 80vw;
+    max-width: 44rem;
+    text-align: center;
+    padding-top: 2rem;
+    background-color: #c9ddf3;
+}

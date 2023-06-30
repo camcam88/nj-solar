@@ -160,14 +160,10 @@ label{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(253, 253, 253);
     margin-top: 2rem;
     border-radius: 6px;
     padding-top: .4rem;
     padding-bottom: .4rem;
     font-weight: 500;
     width: 100%;
-}
-.roofBtn:hover{
-    background-color: rgb(247, 247, 247);
 }

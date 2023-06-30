@@ -60,7 +60,6 @@ function FAQContent(){
         <h1 className='text-center text-5xl pt-12'>FAQs</h1>
         <div className='faqDiv max-w-5xl mx-auto'>
         {Object.keys(solarPanelFAQs).map(function (faq, i) {
-                // console.log("faq.toString()", solarPanelFAQs[faq.toString()].question)
                 return(
                 <>
                     <FaqText key={i} question={solarPanelFAQs[faq.toString()].question} answer={solarPanelFAQs[faq.toString()].answer}/>

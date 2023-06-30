@@ -31,8 +31,6 @@ exports.handler = async (event, context) => {
         .catch(error => {
             console.error('Error sending email:', error);
     });
-    
-    console.log('message: ', message)
 
     return {
         statusCode: 200,
@@ -46,5 +44,3 @@ exports.handler = async (event, context) => {
         }
     }
 }
-
-
