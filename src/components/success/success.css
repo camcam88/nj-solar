@@ -1,0 +1,48 @@
+.succesDiv{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8;
+    width: 95vw;
+    height: 90vh;
+    z-index: 100 !important;
+    align-content: center;
+}
+
+.succesDiv h1{
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: green;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.succesDiv p{
+    text-align: center;
+    font-size: .9rem;
+    font-weight: 300;
+    color: rgb(58, 57, 57);
+    padding-inline: 2rem;
+}
+.succesDiv p:first-of-type{
+    font-size: 1.2rem;
+}
+
+.succesDiv h3{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgb(58, 57, 57);
+    margin-top: .8rem;
+}
+
+.succesDiv h2{
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: #5289C9 !important;
+    margin-top: .8rem;
+    padding-left: 2rem;
+}

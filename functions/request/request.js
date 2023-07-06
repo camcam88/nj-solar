@@ -1,4 +1,5 @@
 const postmark = require("postmark");
+// import the succes component to send back to the client
 
 // generate a test email    
 const generateOrderEmail = ({ firstName, lastName, email, priceEst }) => `
@@ -12,7 +13,7 @@ const client = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN);
 
 exports.handler = async (event, context) => {
     console.log('body: ', JSON.parse(event.body))
-    const { firstName, lastName, email, priceEst } = JSON.parse(event.body)
+    const { firstName, lastName, email, priceEst, address, zip} = JSON.parse(event.body)
     const requiredFields = [firstName, lastName, email, priceEst]
 
     const message = {

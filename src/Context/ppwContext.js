@@ -10,8 +10,13 @@ const ExposureContext = createContext();
 const ExpsoureUpdateContext = createContext();
 const ReturnPPWContext = createContext();
 const PriceContext = createContext();
+const SetInstallPriceContext = createContext();
 const InstallPriceContext = createContext();
+const SetBatterPriceContext = createContext();
 const BatterPriceContext = createContext();
+const NumberOfPanelsContext = createContext();
+const RoofTypeContext = createContext();
+const SetRoofTypeContext = createContext();
 
 export function usePPW() {
     return useContext(PpwContext)
@@ -40,12 +45,27 @@ export function usePrice() {
     return useContext(PriceContext)
 }
 
+export function useSetInstallPrice() {
+    return useContext(SetInstallPriceContext)
+}
 export function useInstallPrice() {
     return useContext(InstallPriceContext)
 }
 
+export function useSetBatteryPrice() {
+    return useContext(SetBatterPriceContext)
+}
 export function useBatteryPrice() {
     return useContext(BatterPriceContext)
+}
+export function useNumberOfPanels() {
+    return useContext(NumberOfPanelsContext)
+}
+export function useRoofType() {
+    return useContext(RoofTypeContext)
+}
+export function useSetRoofType() { 
+    return useContext(SetRoofTypeContext)
 }
 
 export function PpwProvider({children}) {
@@ -57,6 +77,8 @@ export function PpwProvider({children}) {
     const [annualUsage, setannualUsage] = useState();
     const [installPrice, setInstallPrice] = useState(0);
     const [batteryPrice, setBatteryPrice] = useState(0);
+    const [numberOfPanels, setNumberOfPanels] = useState(0);
+    const [roofType, setRoofType] = useState('')
 
 
     // calulate the annual usage based on the monthly bill
@@ -86,7 +108,7 @@ export function PpwProvider({children}) {
 
         // to find the number of panels needed we multiplied the annual usage and the exposre variable, then divide by system watts, then round up to the nearest whole number
         const numberOfPanels = Math.ceil((annualUsage * exposureState)/systemWatts)
-
+        setNumberOfPanels(numberOfPanels)
         // then we multiply that by the system watts to get the total watts needed
         const totalWatts = numberOfPanels * systemWatts
 
@@ -126,13 +148,16 @@ export function PpwProvider({children}) {
     }
 
     function setInstall(install){
-        setInstallPrice(install)
-        setPriceState(priceState + install)
+        // if install is true set the install price to 5292.00, if false set to 0
+        install ? setInstallPrice(5292.00) : setInstallPrice(0)
     }
 
     function setBattery(battery){
-        setBatteryPrice(battery)
-        setPriceState(priceState + battery)
+        // if battery is true set the battery price to 11200.00, if false set to 0
+        battery ? setBatteryPrice(11200.00) : setBatteryPrice(0)
+    }
+    function setRoof(roof){
+        setRoofType(roof)
     }
 
     return (
@@ -144,11 +169,21 @@ export function PpwProvider({children}) {
                             <ExposureContext.Provider value={exposureState}>
                                 <ExpsoureUpdateContext.Provider value={chageExposure}>
                                     <PriceContext.Provider value={priceState}>
-                                        <InstallPriceContext.Provider value={setInstall}>
-                                            <BatterPriceContext.Provider value={setBattery}>
-                                            {children}
+                                        <SetInstallPriceContext.Provider value={setInstall}>
+                                        <InstallPriceContext.Provider value={installPrice}>
+                                            <SetBatterPriceContext.Provider value={setBattery}>
+                                            <BatterPriceContext.Provider value={batteryPrice}>
+                                                <NumberOfPanelsContext.Provider value={numberOfPanels}>
+                                                    <SetRoofTypeContext.Provider value={setRoof}>
+                                                        <RoofTypeContext.Provider value={roofType}>
+                                                            {children}
+                                                        </RoofTypeContext.Provider>
+                                                    </SetRoofTypeContext.Provider>
+                                                </NumberOfPanelsContext.Provider>
                                             </BatterPriceContext.Provider>
+                                            </SetBatterPriceContext.Provider>
                                         </InstallPriceContext.Provider>
+                                        </SetInstallPriceContext.Provider>
                                     </PriceContext.Provider>
                                 </ExpsoureUpdateContext.Provider>
                             </ExposureContext.Provider>

@@ -1,18 +1,24 @@
 import React from 'react';
 import { StaticImage } from "gatsby-plugin-image"
 import { useState } from 'react';
-
+import { useSetRoofType } from '../../Context/ppwContext';
 export default ()=> {
 
     const [choice, setChoice] = useState('')
+
+    const setRoofType = useSetRoofType();
 
     const handleClick =(e)=>{
         const target = e.target.id;
         const parent = e.target.parentElement.id;
 
-        if(target === 'shingles' || parent === 'shingles') setChoice('shingles');   
+        if(target === 'shingles' || parent === 'shingles') setChoice('shingles');
+        // if shingles is selected, set the roof type to shingles
+        if(target === 'shingles' || parent === 'shingles') setRoofType('Shingles Rooftop');
         if(target === 'ground' || parent === 'ground') setChoice('ground');
+        if(target === 'ground' || parent === 'ground') setRoofType('Ground');
         if(target === 'flat' || parent === 'flat') setChoice('flat');
+        if(target === 'flat' || parent === 'flat') setRoofType('Flat Rooftop');
         console.log(target)
     }
 

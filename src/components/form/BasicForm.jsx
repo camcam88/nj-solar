@@ -11,8 +11,11 @@ import Install from './Install'
 import Payment from './Payment'
 
 import {useForm} from '../../Context/systemContext'
-import {useExposure, useMinWat, usePPW, usePrice, useSetUsage} from '../../Context/ppwContext'
+import {useExposure, useMinWat, usePPW, usePrice, useSetUsage, useInstallPrice, useBatteryPrice, useNumberOfPanels, useRoofType} from '../../Context/ppwContext'
+import {useZip} from '../../Context/zipContext'
 import ZipCheck from './ZipCheck'
+
+import SuccessPage from '../success/Success'
 
 import './form.css'
 
@@ -31,6 +34,11 @@ export default function BasicForm(props){
     const ppw = usePPW();
     const price = usePrice();
     const setannualUsage = useSetUsage()
+    const installPrice = useInstallPrice()
+    const batteryPrice = useBatteryPrice()
+    const numberOfPanels = useNumberOfPanels()
+    const roofType = useRoofType()
+    const zip = useZip()
 
     let domainName
     if (typeof window !== 'undefined') {
@@ -74,16 +82,25 @@ export default function BasicForm(props){
 
     return(
         <div className='text-black'>
+            
             <Formik
             initialValues={{
                 firstName: '',
                 lastName: '',
                 email: '',
+                address: '',
+                zip: zip,
                 potHead:'',
                 system: system,
                 priceEst: price,
                 payChoice: payChoice,
                 exposure: exposure,
+                installPrice: installPrice,
+                batteryPrice: batteryPrice,
+                minWat: minWat,
+                ppw: ppw,
+                numberOfPanels: numberOfPanels,
+                roofType: roofType,
             }}
             onSubmit={async (values) => {
                 await new Promise((r) => setTimeout(r, 500));
@@ -93,6 +110,17 @@ export default function BasicForm(props){
             >
             <Form className='solarForm flex flex-col items-center'>
                 {zipState? <ZipCheck/> : ''}
+                {message? <SuccessPage 
+                    system={system} 
+                    priceEst={price} 
+                    installCost={installPrice} 
+                    batteryCost={batteryPrice} 
+                    panelCount={numberOfPanels}
+                    exposure={exposure}
+                    roofType={roofType}
+                    />:
+                <>
+                
                 {
                     // only show the unit size if the untitSizeSet is true  
                     // otherwise show the panel selection
@@ -123,7 +151,7 @@ export default function BasicForm(props){
                     <p 
                         className='text-left mb-6 text-slate-500 font-light' 
                         >Select a payment option.</p>
-                    <Payment postPrice={price} onPayButtonClick={handlePayChange}/>
+                    <Payment postPrice={price + installPrice + batteryPrice} onPayButtonClick={handlePayChange}/>
 
                     <label 
                         className='label max-w-5xl mt-28 mb-6'
@@ -175,10 +203,12 @@ export default function BasicForm(props){
                         disabled={loading}>{loading? 'Placing Order...' : 'Submit Order'}</button>
                 </>    
                 }
+                </>
+                }
+                
             </Form>
         </Formik>
         {error? error : ''}
-        {message? message: ''}
         </div>
     )
 }

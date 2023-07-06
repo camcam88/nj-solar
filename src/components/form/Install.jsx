@@ -1,6 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
-import { usePriceUpdate, usePrice, useInstallPrice, useBatteryPrice } from '../../Context/ppwContext';
+import { usePriceUpdate, usePrice, useSetInstallPrice, useSetBatteryPrice } from '../../Context/ppwContext';
 
 import './install.css'
 import install from '../../images/install.png'
@@ -11,16 +11,16 @@ import AddOn from './AddOn'
 export default function Install(props){
     const price = usePrice();
     
-    const setIPrice = useInstallPrice();
-    const setBPrice = useBatteryPrice();
+    const setIPrice = useSetInstallPrice();
+    const setBPrice = useSetBatteryPrice();
 
     const handleInstallClick = (e) => {
         e.preventDefault()
-        setIPrice(5292.00)
+        setIPrice(true)
     }
     const handleBatteryClick = (e) => {
         e.preventDefault()
-        setBPrice(11200.00)
+        setBPrice(true)
     }
 
     return(
