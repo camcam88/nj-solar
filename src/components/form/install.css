@@ -44,3 +44,10 @@
     max-width: 28rem;
     height: 12rem;
 }
+
+.greenCheck{
+    width: 4.5rem;
+    position: relative;
+    left: 60vw;
+    top: -10vh;
+}

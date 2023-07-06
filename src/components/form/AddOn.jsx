@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 
 
 export default function AddOn({title, text, postCost, preCost, imageSrc, alt, clickFunction}){

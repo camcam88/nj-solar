@@ -15,7 +15,7 @@ import {useExposure, useMinWat, usePPW, usePrice, useSetUsage, useInstallPrice, 
 import {useZip} from '../../Context/zipContext'
 import ZipCheck from './ZipCheck'
 
-import SuccessPage from '../success/Success'
+import SuccessPage from '../succes/Success'
 
 import './form.css'
 
@@ -53,6 +53,15 @@ export default function BasicForm(props){
         const formData = values
         formData.system = system
         formData.priceEst = price
+        formData.payChoice = payChoice
+        formData.exposure = exposure
+        formData.installPrice = installPrice
+        formData.batteryPrice = batteryPrice
+        formData.minWat = minWat
+        formData.ppw = ppw
+        formData.numberOfPanels = numberOfPanels
+        formData.roofType = roofType
+        formData.zip = zip
 
         const response = await fetch(`/.netlify/functions/request`, {
         method: 'POST',
@@ -116,7 +125,6 @@ export default function BasicForm(props){
                     installCost={installPrice} 
                     batteryCost={batteryPrice} 
                     panelCount={numberOfPanels}
-                    exposure={exposure}
                     roofType={roofType}
                     />:
                 <>

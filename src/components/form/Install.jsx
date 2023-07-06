@@ -1,26 +1,32 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { usePriceUpdate, usePrice, useSetInstallPrice, useSetBatteryPrice } from '../../Context/ppwContext';
+import { useState } from 'react';
+import { useSetInstallPrice, useSetBatteryPrice } from '../../Context/ppwContext';
 
 import './install.css'
-import install from '../../images/install.png'
-import battery from '../../images/eBattery.png'
 
+import installIMg from '../../images/install.png'
+import batteryImg from '../../images/battery.png'
+import greenCheckMark from '../../images/greenCheckMark.png'
 import AddOn from './AddOn'
 
 export default function Install(props){
-    const price = usePrice();
     
     const setIPrice = useSetInstallPrice();
     const setBPrice = useSetBatteryPrice();
+    const [install, setInstall] = useState(false)
+    const [battery, setBattery] = useState(false)
 
     const handleInstallClick = (e) => {
         e.preventDefault()
-        setIPrice(true)
+        setIPrice(!install)
+        setInstall(!install)
+        console.log("install",install)
     }
     const handleBatteryClick = (e) => {
         e.preventDefault()
-        setBPrice(true)
+        setBPrice(!battery)
+        setBattery(!battery)
+        console.log("battery",battery)
     }
 
     return(
@@ -31,7 +37,7 @@ export default function Install(props){
                     text="We've established relationships with top rated installers in your area to offer full install workmanshio warranty and a low fat install rate. Disable if you want a DIY option" 
                     preCost="7,560.00" 
                     postCost="5,292.00"
-                    imageSrc={install} 
+                    imageSrc={installIMg} 
                     alt='installer icon'
                     clickFunction={handleInstallClick}
                     />
@@ -41,7 +47,7 @@ export default function Install(props){
                     Battery 10s together, providing 30.24 kWh of storage." 
                     preCost="16,000.00" 
                     postCost="11,200.00" 
-                    imageSrc={battery} 
+                    imageSrc={batteryImg} 
                     alt='installer icon' 
                     clickFunction={handleBatteryClick}
                     />

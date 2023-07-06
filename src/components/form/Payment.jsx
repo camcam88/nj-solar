@@ -34,7 +34,7 @@ export default function Payment({postPrice, onPayButtonClick}){
             </button>
             <button id='finance' type='button' className={choice === 'finance'? 'payChoice mb-6': 'payOption mb-6'} onClick={handleClick}>
                 <h3 className='mb-4 text-3xl text-[#5289C9]'>Finance</h3>
-                <p className='font-semibold'>$204.49 /month</p>
+                <p className='font-semibold'>{"$" + Math.trunc(postPrice/300).toLocaleString("en-US") + ".00"} /month</p>
                 <p className='text-sm'>Pre-incentive: $292.13 /month</p>
             </button>
         </div>
