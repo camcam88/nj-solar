@@ -40,6 +40,7 @@ export default function Install(props){
                     imageSrc={installIMg} 
                     alt='installer icon'
                     clickFunction={handleInstallClick}
+                    imgClass={install? 'greenCheck': 'hidden'}
                     />
                 <AddOn 
                     title='Emphases IQ Battery' 
@@ -50,6 +51,7 @@ export default function Install(props){
                     imageSrc={batteryImg} 
                     alt='installer icon' 
                     clickFunction={handleBatteryClick}
+                    imgClass={battery? 'greenCheck': 'hidden'}
                     />
             </div>
         </div>

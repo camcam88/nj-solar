@@ -1,7 +1,8 @@
 import React, { Children } from 'react';
 
+import greenCheckMark from '../../images/greenCheckMark.png'
 
-export default function AddOn({title, text, postCost, preCost, imageSrc, alt, clickFunction}){
+export default function AddOn({title, text, postCost, preCost, imageSrc, alt, clickFunction, imgClass}){
     return(
         <button className="addon flex-col h-96 sm:flex-row sm:h-80" onClick={clickFunction} type='button'>
             <img className='addOnImage' src={imageSrc} alt={alt}/>
@@ -11,6 +12,7 @@ export default function AddOn({title, text, postCost, preCost, imageSrc, alt, cl
             <p className='postCost sm:text-left'>+ ${postCost}</p>
             <p className='preCost sm:text-left'>Pre-incentive: ${preCost}</p>
             </div>
+            <img className={imgClass} src={greenCheckMark} alt="greenCheckMark" />
         </button>
     )
 }

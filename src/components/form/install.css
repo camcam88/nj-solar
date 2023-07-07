@@ -46,8 +46,7 @@
 }
 
 .greenCheck{
-    width: 4.5rem;
-    position: relative;
-    left: 60vw;
-    top: -10vh;
+    width: 4rem;
+    position: absolute;
+    translate: 140px 114px;
 }
