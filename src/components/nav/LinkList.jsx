@@ -16,6 +16,7 @@ function LinkList(){
                         <NavLink to="/about" name='About Us'/> 
                         <NavLink to="/coverage" name='Coverage Area'/> 
                         <NavLink to="/faq" name='FAQ'/> 
+                        <NavLink to="/start" name='Get Started'/> 
                     </div>
     )
 }

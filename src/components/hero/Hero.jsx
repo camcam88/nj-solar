@@ -91,8 +91,8 @@ function HeroPage() {
                     mainImg
                     mt-20
                     w-[38vw]
-                    translate-y-1
-                    -translate-x-4
+                    translate-y-0.5
+                    -translate-x-1
                     lg:hidden
                 '
                 />
