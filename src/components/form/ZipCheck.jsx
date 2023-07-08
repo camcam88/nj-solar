@@ -44,7 +44,7 @@ function ZipCheck (){
     }    
 
     return (
-        <div className={hidden? 'zipDiv zipHidden' : 'zipDiv'}>
+        <div className={hidden? 'zipDiv zipHidden' : 'zipDiv'} onKeyDown={handleKeyPress}>
             <label className='zipLabel' htmlFor="zipCode">Zip Code</label>
             <p className='zipP'>Please provide your postal code.</p>
             <Field className='zipField' id="zipCode" name="zipCode" placeholder="0000000" disabled={false} onChange={handleChange}/>

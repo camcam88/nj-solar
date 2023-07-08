@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 import { Field } from 'formik';
 import {useSetUsage} from '../../Context/ppwContext'
+import {useZip} from '../../Context/zipContext'
+
 import Swiper from './Swiper';
 
 import RoofChoice from './RoofChoice';
@@ -15,7 +17,9 @@ function UnitSize({onSetUntitSizeSet}){
     const [loading, setLoading] = useState(false);
 
     const setannualUsage = useSetUsage()
+    const zip = useZip()
 
+    console.log("zip", zip)
     const handleChange = (e)=>{
         let number = e.target.value;
         setEnergyBill(number)
@@ -25,6 +29,10 @@ function UnitSize({onSetUntitSizeSet}){
         setannualUsage(energyBill)
         const set = true
         onSetUntitSizeSet(set)
+        // if window in not undifined set the scroll to the top of the page with a smooth animation
+        if (typeof window !== 'undefined') {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
     }
 
     return(
@@ -56,8 +64,8 @@ function UnitSize({onSetUntitSizeSet}){
         <p 
             className='text-left mb-6 text-slate-500 font-light' 
             >Which of the following matches where you want the panels installed?</p>
-        <RoofChoice/>
-        <button className='Field submit mt-6 max-w-5xl' type="button" onClick={handleClick} disabled={loading}>Continue</button>
+        <RoofChoice />
+        <button className='Field submit mt-6 max-w-5xl' type="button" onClick={handleClick} disabled={!zip}>Continue</button>
         </>
     )
 }

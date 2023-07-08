@@ -24,7 +24,7 @@ export default function BasicForm(props){
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState(false);
     const [untitSizeSet, setUntitSizeSet] = useState(false)
-    const [payChoice, setPayChoice] = useState('')
+    const [payChoice, setPayChoice] = useState('Finance')
 
     const [zipState, setZipState] = useState(true);
     const system = useForm()
@@ -44,9 +44,6 @@ export default function BasicForm(props){
     if (typeof window !== 'undefined') {
         domainName = window.location.hostname;
         }
-
-    // https://build-c30756c0-e33a-42e8-a5d9-d3c2f5c36572.gatsbyjs.io/start
-    // https://njsolar.gatsbyjs.io/.netlify/functions/submitRequest
 
     const handleSubmit = async (values) => {
         setLoading(true);
@@ -87,6 +84,7 @@ export default function BasicForm(props){
 
     const handlePayChange = (choice)=>{
         setPayChoice(choice)
+        console.log("payChoice", payChoice)
     }
 
     return(
@@ -115,6 +113,10 @@ export default function BasicForm(props){
                 await new Promise((r) => setTimeout(r, 500));
                 // alert(JSON.stringify(values, null, 2));
                 handleSubmit(values)
+                // if window in not undifined set the scroll to the top of the page with a smooth animation
+                if (typeof window !== 'undefined') {
+                    window.scrollTo({top: 0, behavior: 'smooth'});
+                }
             }}
             >
             <Form className='solarForm flex flex-col items-center'>

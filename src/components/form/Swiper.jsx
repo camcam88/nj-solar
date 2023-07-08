@@ -12,6 +12,13 @@ export default ()=> {
         const target = e.target.id
         setChoice(target)
         setExpsore(target)
+        // if window is not undefined, scroll to next component
+        if(typeof window !== 'undefined'){
+            window.scrollTo({
+                top: 500,
+                behavior: 'smooth'
+            })
+        }
         
     }
 
