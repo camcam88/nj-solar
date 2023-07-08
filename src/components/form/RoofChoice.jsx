@@ -19,7 +19,14 @@ export default ()=> {
         if(target === 'ground' || parent === 'ground') setRoofType('Ground');
         if(target === 'flat' || parent === 'flat') setChoice('flat');
         if(target === 'flat' || parent === 'flat') setRoofType('Flat Rooftop');
-        console.log(target)
+
+        // if window is not undefined, scroll to next component
+        if(typeof window !== 'undefined'){
+            window.scrollTo({
+                top: 2000,
+                behavior: 'smooth'
+            })
+        }
     }
 
     return (

@@ -18,6 +18,14 @@ function RadioBtn({lable, pannelImag}){
     const handlePanelClick =(e)=>{
         changeSystem(lable)
         setSystem(lable)
+
+        // if window is not undefined, scroll to next component
+        if(typeof window !== 'undefined'){
+            window.scrollTo({
+                top: 1050,
+                behavior: 'smooth'
+            })
+        }
     }
 
     return(

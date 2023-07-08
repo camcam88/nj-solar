@@ -21,12 +21,27 @@ export default function Install(props){
         setIPrice(!install)
         setInstall(!install)
         console.log("install",install)
+        // if window is not undefined, scroll to next component
+        if(typeof window !== 'undefined'){
+            window.scrollTo({
+                top: 1600,
+                behavior: 'smooth'
+            })
+        }
     }
     const handleBatteryClick = (e) => {
         e.preventDefault()
         setBPrice(!battery)
         setBattery(!battery)
         console.log("battery",battery)
+
+        // if window is not undefined, scroll to next component
+        if(typeof window !== 'undefined'){
+            window.scrollTo({
+                top: 2150,
+                behavior: 'smooth'
+            })
+        }
     }
 
     return(

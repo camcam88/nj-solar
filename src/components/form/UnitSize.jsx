@@ -35,6 +35,13 @@ function UnitSize({onSetUntitSizeSet}){
         }
     }
 
+    const handleBlur = (e)=>{
+        // if the value is more than 0 and window is not undifined set the scroll to the next form with a smooth animation
+        if (e.target.value > 0 && typeof window !== 'undefined') {
+            window.scrollTo({top: 1000, behavior: 'smooth'});
+        }
+    };
+
     return(
         <>
         <label 
@@ -57,6 +64,7 @@ function UnitSize({onSetUntitSizeSet}){
             type='number' 
             placeholder="$0" 
             onChange={handleChange} 
+            onBlur={handleBlur}
             disabled={onSetUntitSizeSet} />
         <label 
             className='label max-w-5xl mt-28' 

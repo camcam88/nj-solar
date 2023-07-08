@@ -22,6 +22,13 @@ export default function Payment({postPrice, onPayButtonClick}){
         console.log('choice',choice)
 
         onPayButtonClick(choice);
+        // if window is not undefined, scroll to next component
+        if(typeof window !== 'undefined'){
+            window.scrollTo({
+                top: 2900,
+                behavior: 'smooth'
+            })
+        }
     }
 
 
