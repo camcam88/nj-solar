@@ -33,7 +33,6 @@ export default function Install(props){
         e.preventDefault()
         setBPrice(!battery)
         setBattery(!battery)
-        console.log("battery",battery)
 
         // if window is not undefined, scroll to next component
         if(typeof window !== 'undefined'){

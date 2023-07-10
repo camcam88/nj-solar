@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 
 import { Field } from 'formik';
-import {useSetUsage} from '../../Context/ppwContext'
+import {useSetUsage, useRoofType, useExposure} from '../../Context/ppwContext'
 import {useZip} from '../../Context/zipContext'
 
 import Swiper from './Swiper';
@@ -14,10 +14,11 @@ import RoofChoice from './RoofChoice';
 
 function UnitSize({onSetUntitSizeSet}){
     const [energyBill, setEnergyBill] = useState(0);
-    const [loading, setLoading] = useState(false);
-
+    const [error, setError] = useState(false);
     const setannualUsage = useSetUsage()
     const zip = useZip()
+    const roofType = useRoofType()
+    const exposure = useExposure()
 
     console.log("zip", zip)
     const handleChange = (e)=>{
@@ -38,7 +39,12 @@ function UnitSize({onSetUntitSizeSet}){
     const handleBlur = (e)=>{
         // if the value is more than 0 and window is not undifined set the scroll to the next form with a smooth animation
         if (e.target.value > 0 && typeof window !== 'undefined') {
+            setError(false)
             window.scrollTo({top: 1000, behavior: 'smooth'});
+        }
+        // if the value is nothing or less than 0 set the error to true
+        if (!e.target.value || e.target.value < 0) {
+            setError(true)
         }
     };
 
@@ -66,6 +72,7 @@ function UnitSize({onSetUntitSizeSet}){
             onChange={handleChange} 
             onBlur={handleBlur}
             disabled={onSetUntitSizeSet} />
+        <div className={error? "error" : "hidden"}>Energy Bill Required</div>
         <label 
             className='label max-w-5xl mt-28' 
             htmlFor="unitSize">Roof Type?</label>
@@ -73,7 +80,7 @@ function UnitSize({onSetUntitSizeSet}){
             className='text-left mb-6 text-slate-500 font-light' 
             >Which of the following matches where you want the panels installed?</p>
         <RoofChoice />
-        <button className='Field submit mt-6 max-w-5xl' type="button" onClick={handleClick} disabled={!zip}>Continue</button>
+        <button className='Field submit mt-6 max-w-5xl' type="button" onClick={handleClick} disabled={!zip || !energyBill || !roofType || !exposure}>Continue</button>
         </>
     )
 }

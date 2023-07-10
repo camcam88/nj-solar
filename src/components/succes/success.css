@@ -8,11 +8,13 @@
     height: 90vh;
     z-index: 100 !important;
     align-content: center;
+    background-color: #ecedef;
+    border-radius: 8px;
 }
 
 .succesDiv h1{
     text-align: center;
-    font-size: 2.4rem;
+    font-size: 3rem;
     font-weight: 400;
     color: green;
     margin-top: 2rem;
@@ -21,13 +23,17 @@
 
 .succesDiv p{
     text-align: center;
-    font-size: .9rem;
+    font-size: 1rem;
     font-weight: 300;
     color: rgb(58, 57, 57);
     padding-inline: 2rem;
 }
 .succesDiv p:first-of-type{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+}
+.succesDiv p:last-of-type{
+    margin-top: 1.8rem;
+    margin-inline: 1rem;
 }
 
 .succesDiv h3{
@@ -37,12 +43,14 @@
     color: rgb(58, 57, 57);
     margin-top: .8rem;
 }
+.succesDiv h3:first-of-type{
+    margin-top: .8rem;
+}
 
 .succesDiv h2{
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 400;
     color: #5289C9 !important;
-    margin-top: .8rem;
-    padding-left: 2rem;
+    margin-top: 1.8rem;
 }

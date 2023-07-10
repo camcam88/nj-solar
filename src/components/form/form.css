@@ -32,7 +32,11 @@ label{
     appearance: textfield;
     -moz-appearance: textfield; /* Firefox */
 }
-
+.error{
+    font-size: smaller;
+    color: red;
+    margin-top: -1.4rem;
+}
 .submit{
     height: 4rem;
 } 

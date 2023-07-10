@@ -19,8 +19,6 @@ export default function Payment({postPrice, onPayButtonClick}){
         if(target === 'cash' || parent === 'cash') setChoice('cash');   
         if(target === 'finance' || parent === 'finance') setChoice('finance');
 
-        console.log('choice',choice)
-
         onPayButtonClick(choice);
         // if window is not undefined, scroll to next component
         if(typeof window !== 'undefined'){

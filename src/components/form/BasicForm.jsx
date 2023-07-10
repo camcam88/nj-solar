@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { Formik, Field, Form } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useState } from 'react';
+import * as Yup from 'yup';
 
 import UnitSize from './UnitSize';
 
@@ -45,6 +46,18 @@ export default function BasicForm(props){
         domainName = window.location.hostname;
         }
 
+    const validationSchema = Yup.object().shape({
+        firstName: Yup.string()
+        .required('First Name Required'),
+        lastName: Yup.string()
+        .required('Last Name Required'),
+        email: Yup.string()
+        .email('Invalid email')
+        .required('Email Required'),
+        address: Yup.string()
+        .required('Address Required'),
+    });
+
     const handleSubmit = async (values) => {
         setLoading(true);
         const formData = values
@@ -84,7 +97,6 @@ export default function BasicForm(props){
 
     const handlePayChange = (choice)=>{
         setPayChoice(choice)
-        console.log("payChoice", payChoice)
     }
 
     return(
@@ -109,6 +121,7 @@ export default function BasicForm(props){
                 numberOfPanels: numberOfPanels,
                 roofType: roofType,
             }}
+            validationSchema={validationSchema}
             onSubmit={async (values) => {
                 await new Promise((r) => setTimeout(r, 500));
                 // alert(JSON.stringify(values, null, 2));
@@ -121,6 +134,14 @@ export default function BasicForm(props){
             >
             <Form className='solarForm flex flex-col items-center'>
                 {zipState? <ZipCheck/> : ''}
+                {/* <SuccessPage 
+                    system={system} 
+                    priceEst={price} 
+                    installCost={installPrice} 
+                    batteryCost={batteryPrice} 
+                    panelCount={numberOfPanels}
+                    roofType={roofType}
+                    /> */}
                 {message? <SuccessPage 
                     system={system} 
                     priceEst={price} 
@@ -163,6 +184,13 @@ export default function BasicForm(props){
                         >Select a payment option.</p>
                     <Payment postPrice={price + installPrice + batteryPrice} onPayButtonClick={handlePayChange}/>
 
+                    {/* <label 
+                        className='label max-w-5xl mt-28 mb-6'
+                        htmlFor="firstName">Preview</label>
+                        <p>Number of Panels: {numberOfPanels}</p>
+                        <p>Estimated Price: {price}</p>
+                        <p>Installation Price: {installPrice}</p>
+                        <p>Battery Price: {batteryPrice}</p> */}
                     <label 
                         className='label max-w-5xl mt-28 mb-6'
                         htmlFor="firstName">First Name</label>
@@ -170,6 +198,7 @@ export default function BasicForm(props){
                         className='Field max-w-5xl' 
                         id="firstName" name="firstName" 
                         placeholder="Jane" disabled={loading}/>
+                    <ErrorMessage name="firstName" component="div" className="error"/>
                     <label 
                         className='label max-w-5xl mb-6' 
                         htmlFor="lastName">Last Name</label>
@@ -179,6 +208,7 @@ export default function BasicForm(props){
                         name="lastName" 
                         placeholder="Doe" 
                         disabled={loading}/>
+                    <ErrorMessage name="lastName" component="div" className="error"/>
                     <label 
                         className='label max-w-5xl mb-6' 
                         htmlFor="email" 
@@ -190,6 +220,7 @@ export default function BasicForm(props){
                         type="email"
                         className='Field max-w-5xl' 
                     />
+                    <ErrorMessage name="email" component="div" className="error"/>
                     <label 
                         className='label max-w-5xl mb-6' 
                         htmlFor="address" 
@@ -201,6 +232,7 @@ export default function BasicForm(props){
                         type="address"
                         className='Field max-w-5xl' 
                     />
+                    <ErrorMessage name="address" component="div" className="error"/>
                     <Field
                         id="potHead"
                         name="potHead"
