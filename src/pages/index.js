@@ -12,7 +12,7 @@ function IndexPage(){
 
 return (
   <Layout>
-    <Seo title="Home" />
+    <Seo title="NJ Solar" />
     <PromoBanner/>
     <NavBar/>
     <Main/>
@@ -21,6 +21,6 @@ return (
 }
 
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title="NJ Solar" />
 
 export default IndexPage

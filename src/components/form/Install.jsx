@@ -13,7 +13,7 @@ export default function Install(props){
     
     const setIPrice = useSetInstallPrice();
     const setBPrice = useSetBatteryPrice();
-    const [install, setInstall] = useState(false)
+    const [install, setInstall] = useState(true)
     const [battery, setBattery] = useState(false)
 
     const handleInstallClick = (e) => {

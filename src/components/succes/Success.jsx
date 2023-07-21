@@ -5,7 +5,7 @@ import './success.css'
 export default function Success({system, priceEst, installCost, batteryCost, panelCount, roofType}) {
     return (
         <div className='succesDiv'>
-        <h1>Success</h1>
+        <h1>Success!</h1>
         <p>Thank you for your submission</p>
         <h2>Summary</h2>
         <h3>System: {system}</h3>

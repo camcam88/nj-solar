@@ -10,6 +10,7 @@ const ExposureContext = createContext();
 const ExpsoureUpdateContext = createContext();
 const ReturnPPWContext = createContext();
 const PriceContext = createContext();
+const PrePriceContext = createContext();
 const SetInstallPriceContext = createContext();
 const InstallPriceContext = createContext();
 const SetBatterPriceContext = createContext();
@@ -44,7 +45,9 @@ export function useReturnPPW() {
 export function usePrice() {
     return useContext(PriceContext)
 }
-
+export function usePrePrice() {
+    return useContext(PrePriceContext)
+}
 export function useSetInstallPrice() {
     return useContext(SetInstallPriceContext)
 }
@@ -71,11 +74,12 @@ export function useSetRoofType() {
 export function PpwProvider({children}) {
     const [ppwState, setPpwState] = useState(0);
     const [minKWattsState, setMinKWattsState] = useState(0);
-    const [priceState, setPriceState] = useState(0);
+    const [postPriceState, setpostPriceState] = useState(0);
+    const [prePriceState, setprePriceState] = useState(0);
     const [exposureState, setExposureState] = useState(1);
     const [unitSize, setUnitSize] = useState(0);
     const [annualUsage, setannualUsage] = useState();
-    const [installPrice, setInstallPrice] = useState(0);
+    const [installPrice, setInstallPrice] = useState(5292);
     const [batteryPrice, setBatteryPrice] = useState(0);
     const [numberOfPanels, setNumberOfPanels] = useState(0);
     const [roofType, setRoofType] = useState('')
@@ -119,6 +123,9 @@ export function PpwProvider({children}) {
         // then we set the unit size to the total kilowatts
         setUnitSize(totalWatts)
         setMinKWattsState(totalKWatts)
+        // the post incenntive price iss ppw * .7
+
+
         //  then we only return the ppw based on the system name and total kilowatts needed if kilowatts is not undefined
         return totalKWatts && search(system, PPW[totalKWatts]);
     }
@@ -139,8 +146,9 @@ export function PpwProvider({children}) {
 
         // format the price to have commas in us currency
         // let commas = Math.trunc(SrecsPrice).toLocaleString("en-US");
-    
-        setPriceState(SrecsPrice)
+        // pre incentive price is the total, the post incentive price is the srecs price
+        setprePriceState(Totat)
+        setpostPriceState(SrecsPrice)
     }
 
     function chageExposure (exposure){
@@ -157,6 +165,14 @@ export function PpwProvider({children}) {
         battery ? setBatteryPrice(11200.00) : setBatteryPrice(0)
     }
     function setRoof(roof){
+        // based on roof type add to the price per panel. for shingles we add 0. for ground we add .20 dollars per panel. for flat roof we add .12 dollars per panel.
+        const roofPrice = {
+            shingles: 0,
+            ground: .20,
+            flat: .12
+        }
+        // setpostPriceState(postPriceState + (roofPrice[roof] * numberOfPanels))
+
         setRoofType(roof)
     }
 
@@ -168,7 +184,8 @@ export function PpwProvider({children}) {
                         <annualUsageContext.Provider value={setUsuage}>
                             <ExposureContext.Provider value={exposureState}>
                                 <ExpsoureUpdateContext.Provider value={chageExposure}>
-                                    <PriceContext.Provider value={priceState}>
+                                    <PriceContext.Provider value={postPriceState}>
+                                        <PrePriceContext.Provider value={prePriceState}>
                                         <SetInstallPriceContext.Provider value={setInstall}>
                                         <InstallPriceContext.Provider value={installPrice}>
                                             <SetBatterPriceContext.Provider value={setBattery}>
@@ -184,6 +201,7 @@ export function PpwProvider({children}) {
                                             </SetBatterPriceContext.Provider>
                                         </InstallPriceContext.Provider>
                                         </SetInstallPriceContext.Provider>
+                                        </PrePriceContext.Provider>
                                     </PriceContext.Provider>
                                 </ExpsoureUpdateContext.Provider>
                             </ExposureContext.Provider>

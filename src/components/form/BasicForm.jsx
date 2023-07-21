@@ -12,7 +12,7 @@ import Install from './Install'
 import Payment from './Payment'
 
 import {useForm} from '../../Context/systemContext'
-import {useExposure, useMinWat, usePPW, usePrice, useSetUsage, useInstallPrice, useBatteryPrice, useNumberOfPanels, useRoofType} from '../../Context/ppwContext'
+import {useExposure, useMinWat, usePPW, usePrice, usePrePrice, useSetUsage, useInstallPrice, useBatteryPrice, useNumberOfPanels, useRoofType} from '../../Context/ppwContext'
 import {useZip} from '../../Context/zipContext'
 import ZipCheck from './ZipCheck'
 
@@ -34,6 +34,7 @@ export default function BasicForm(props){
     const minWat =useMinWat();
     const ppw = usePPW();
     const price = usePrice();
+    const prePrice = usePrePrice()
     const setannualUsage = useSetUsage()
     const installPrice = useInstallPrice()
     const batteryPrice = useBatteryPrice()
@@ -182,7 +183,7 @@ export default function BasicForm(props){
                     <p 
                         className='text-left mb-6 text-slate-500 font-light' 
                         >Select a payment option.</p>
-                    <Payment postPrice={price + installPrice + batteryPrice} onPayButtonClick={handlePayChange}/>
+                    <Payment postPrice={price + installPrice + batteryPrice} prePrice={prePrice + installPrice + batteryPrice} onPayButtonClick={handlePayChange}/>
 
                     {/* <label 
                         className='label max-w-5xl mt-28 mb-6'

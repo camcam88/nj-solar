@@ -8,6 +8,7 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import seoImage from '../images/NJSolarDeals.png'
 
 function Seo({ description, title, children }) {
   const { site } = useStaticQuery(
@@ -33,6 +34,7 @@ function Seo({ description, title, children }) {
       <meta name="description" content={metaDescription} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={metaDescription} />
+      <meta property="og:url" content="https://newjerseysolardeals.com" /> 
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />
