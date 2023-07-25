@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {useForm, useFormUpdate} from '../../Context/systemContext'
 import { usePriceUpdate, useReturnPPW} from '../../Context/ppwContext'
 // import pannelImag from '../../images/qcell365.png'
+
 function RadioBtn({lable, pannelImag}){
     const [ppwState, setPpwState] = useState();
     const sytem = useForm()
@@ -46,6 +47,7 @@ function RadioBtn({lable, pannelImag}){
         items-center
         bg-[#c9ddf3]
         font-bold
+        overflow-hidden
         ` 
         :
         `text-center
@@ -63,7 +65,8 @@ function RadioBtn({lable, pannelImag}){
         flex
         flex-col
         justify-center
-        items-center`}>
+        items-center
+        overflow-hidden`}>
             <img  src={pannelImag} 
             alt="pannelImag"
             className='h-44 sm:h-60
@@ -72,10 +75,14 @@ function RadioBtn({lable, pannelImag}){
             <hr/>
             {lable} 
             <span className={sytem == lable? `text-emerald-600 mb-2` 
-        :
-        `font-semibold text-emerald-600 mb-2`}>
+            :
+            `font-semibold text-emerald-600 mb-2`}>
                 PPW: ${ppwState}
             </span>
+            {lable === 'SOLARIA 400'? <div className='topChoice'>
+                top choice
+            </div>: ``}
+            
         </button>
     )
 }

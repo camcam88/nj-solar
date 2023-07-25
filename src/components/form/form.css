@@ -171,3 +171,17 @@ label{
     font-weight: 500;
     width: 100%;
 }
+.topChoice{
+    background-color: #5289C9;
+    color: white;
+    font-size: small;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 6px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    /* border: #5289C9 solid ; */
+    border-radius: 6px;
+    position: absolute;
+    transform: translateY(135%);
+}
